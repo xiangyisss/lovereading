@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/reviews', [ ReviewController::class, 'index']);
+Route::get('/books', [ BookController::class, 'index']);
+
 Route::get('/token', function(){
     return [
         'token' => csrf_token()
     ];
 });
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
