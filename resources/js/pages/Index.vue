@@ -1,6 +1,7 @@
 <template>
     <div>
        <h3>This is index page</h3> 
+       <router-link to="/login_page">login</router-link>
     </div>
 </template>
 
