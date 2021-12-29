@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class HomeController extends Controller
-{   
-
+class RegisterController extends Controller
+{
     public function index()
     {
-        return Inertia::render('Home/HomeIndex');
+        return Inertia::render('Auth/Register');
     }
 }

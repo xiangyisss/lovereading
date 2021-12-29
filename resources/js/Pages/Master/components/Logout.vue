@@ -1,18 +1,20 @@
 <template>
     <div>
-        <h2>test</h2>
+        <button @click="logout" >Log out</button>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import axios from 'axios'
 export default defineComponent({
-    name: 'App',
     setup () {
-        
 
-        return {}
+        const logout = () => {
+            axios.post('/logout')
+        }
+
+        return { logout }
     }
 })
 </script>

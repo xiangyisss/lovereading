@@ -1,8 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+// use App\Http\Controllers\ReviewController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +21,13 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/reviews', [ ReviewController::class, 'index']);
-Route::get('/books', [ BookController::class, 'index']);
+
+Route::get('/', [ Homecontroller::class, 'index']);
+Route::get('/about', [ BookController::class, 'index']);
+Route::get('/login_form', [ LoginController::class, 'index']);
+Route::get('/register_form', [ RegisterController::class, 'index']);
+Route::get('/auth_user', [UserController::class, 'index']);
 
 Route::get('/token', function(){
     return [
