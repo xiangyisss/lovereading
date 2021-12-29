@@ -6,9 +6,15 @@
             </div>
             <div class="menu-list">
                 <Link href="/about">About</Link>
-                <Link href="/login_form">Login</Link>
-                <Link href="/register_form">Register</Link>
+                <span v-if="username">
+
                 <Logout />
+                </span>
+                <span v-else>
+
+                <Link href="/login_form" >Login</Link>
+                <Link href="/register_form"  >Register</Link>
+                </span>
             </div>
         </header>
         <article>
@@ -18,10 +24,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import axios from "axios";
 import Logout from './components/Logout.vue';
+import AuthUser from '../../stores/AuthUser';
 
 export default defineComponent({
     components: {
@@ -37,8 +44,18 @@ export default defineComponent({
             "X-CSRF-TOKEN": window.csrf_token,
         };
         
+        const { state, authUser } = AuthUser();
+        
+        onMounted( () => {
+            axios.get('/auth_user')
+            .then(
+                (res) => {
+                    authUser(res.data.name, res.data.email, res.data.id)
+                }
+            )
+        })
 
-        return { };
+        return { ...state };
     },
 });
 </script>
@@ -58,6 +75,12 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+.menu-list {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .menu-list > * {
     padding-right: 1.5rem;
 }
@@ -66,6 +89,6 @@ a {
     color: rgb(240, 33, 33);
     /* padding-right: 1.5rem; */
     font-weight: 600;
-    /* display: block; */
+    display: block;
 }
 </style>

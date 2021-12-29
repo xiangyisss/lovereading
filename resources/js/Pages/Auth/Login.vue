@@ -26,11 +26,15 @@
 import { defineComponent, reactive } from "vue";
 import MasterLayout from "../Master/MasterLayout.vue";
 import axios from "axios";
+import AuthUser from '../../stores/AuthUser';
+
 
 export default defineComponent({
     name: "Login",
     layout: MasterLayout,
     setup() {
+
+        const { state, authUser } = AuthUser();
         const loginData = reactive({
             email: "",
             password: "",
@@ -39,7 +43,14 @@ export default defineComponent({
         const login = () => {
             axios
                 .post("/login", loginData)
-                .then((res) => console.log(res))
+                .then(
+                    () => axios.get('/auth_user')
+                    .then(
+                        res => {
+                            authUser(res.data.name, res.data.email, res.data.id)
+                        }
+                    )
+                )
                 .catch((err) => console.log(err.messages));
         };
 

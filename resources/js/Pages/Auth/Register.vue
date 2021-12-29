@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div >
         <h1>This is register page.</h1>
-        <h2 v-if="username">Name: {{username}}</h2>
+        <h2 >Name: {{username}}</h2>
         <form action="" method="post" @submit.prevent="sendRegisterData" autocomplete="off">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" v-model="registerForm.name" required>

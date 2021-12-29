@@ -7,7 +7,7 @@ const state = reactive({
 })
 
 export default () => {
-    const authUser = (name : string, email : string, id : number) => {
+    const authUser = (name : string, email : string, id : number ) => {
         state.username = name,
         state.email = email,
         state.id = id;
