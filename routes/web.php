@@ -23,11 +23,16 @@ use App\Http\Controllers\RegisterController;
 
 
 
-Route::get('/', [ Homecontroller::class, 'index']);
-Route::get('/about', [ BookController::class, 'index']);
+Route::get('/', [ BookController::class, 'index']);
+Route::get('/books', [ BookController::class, 'getBooks']);
+
+// Route::get('/about', [ BookController::class, 'index']);
 Route::get('/login_form', [ LoginController::class, 'index']);
 Route::get('/register_form', [ RegisterController::class, 'index']);
 Route::get('/auth_user', [UserController::class, 'index']);
+
+
+
 
 Route::get('/token', function(){
     return [
