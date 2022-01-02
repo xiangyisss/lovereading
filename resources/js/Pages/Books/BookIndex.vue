@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1 >This is the books page</h1>
+        <button type="button" class="btn btn-outline-primary">Primary</button>
 
         <div class="book-box" v-for="book in books" :key="book.id">
             <p class="title" >Title:{{book.title}}</p>

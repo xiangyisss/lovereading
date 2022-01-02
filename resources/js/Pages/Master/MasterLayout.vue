@@ -9,6 +9,7 @@
                 <span v-if="username">
 
                 <Logout />
+                <Link href="/add_new_book">Add new book </Link>
                 </span>
                 <span v-else>
 

@@ -25,14 +25,13 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [ BookController::class, 'index']);
 Route::get('/books', [ BookController::class, 'getBooks']);
+Route::get('/add_new_book', [ BookController::class, 'addNewBook']);
+Route::post('/save_book', [ BookController::class, 'storeBook']);
 
 // Route::get('/about', [ BookController::class, 'index']);
 Route::get('/login_form', [ LoginController::class, 'index']);
 Route::get('/register_form', [ RegisterController::class, 'index']);
 Route::get('/auth_user', [UserController::class, 'index']);
-
-
-
 
 Route::get('/token', function(){
     return [
