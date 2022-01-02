@@ -19604,12 +19604,12 @@ var __generator = undefined && undefined.__generator || function (thisArg, body)
       data.append('genre', bookInfo.genre);
       data.append('image', images.value);
       data.append('buy_link', bookInfo.buy_link);
-      var config = {
+      console.log('Upload image path is', images.value);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/save_book', data, {
         headers: {
           'content-type': 'multipart/form-data'
         }
-      };
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/save_book', data, config).then(function (res) {
+      }).then(function (res) {
         return console.log('Post Ok', res.data);
       })["catch"](function (err) {
         return console.log(err);
@@ -20017,9 +20017,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, "Genre " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.author), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img class=\"image\" :src=\"`/images/${book.image}`\" width=\"100\" />Image  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       "class": "image",
-      src: book.image
+      src: "/storage/".concat(book.image),
+      width: "100"
     }, null, 8
     /* PROPS */
     , _hoisted_7), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -20143,7 +20144,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.bookInfo.genre]]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    accept: "image/*",
     ref: "images",
     name: "image",
     id: "image",

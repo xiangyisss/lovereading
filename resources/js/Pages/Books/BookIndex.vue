@@ -8,7 +8,9 @@
             <p class="author">Author {{book.author}}</p>
             <p class="description">Description {{book.description}}</p>
             <p class="genre">Genre {{book.author}}</p>
-            <img class="image" :src="book.image" />Image 
+            <!-- <img class="image" :src="`/images/${book.image}`" width="100" />Image  -->
+            <img class="image" :src="`/storage/${book.image}`" width="100" />Image 
+
             <a class="buy_link" :href="book.buy_link">Buy Link </a>
         </div>
     </div>
@@ -16,7 +18,7 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { defineComponent, onMounted, reactive, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import MasterLayout from '../Master/MasterLayout.vue';
 
 interface Book {

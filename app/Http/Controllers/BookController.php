@@ -33,8 +33,13 @@ class BookController extends Controller
     {   
 
         $validData = $request->validated();
-        $this->book->create($validData);
-        $path = $request->file('image')->store('images');
-        return $path;
+        $path = $request->file('image')->store('uploads', 'public');
+        $updateData = array_merge($validData, [
+            'image' => $path, 
+        ]);
+        $this->book->create($updateData);
+
+        return $validData;
     }
+
 }

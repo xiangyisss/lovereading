@@ -10,7 +10,7 @@
             <label for="genre">Genre</label>
             <input type="text" name="genre" id="genre" v-model="bookInfo.genre" required>
             <label for="image">Image</label>
-            <input type="file" accept="image/*" ref="images"  name="image" id="image" @change="imageUpload($event)" >
+            <input type="file"  ref="images"  name="image" id="image" @change="imageUpload($event)" >
             <label for="image">Link</label>
             <input type="text" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
             <button>Add new book</button>
@@ -52,13 +52,13 @@ export default defineComponent({
             data.append('genre', bookInfo.genre,)
             data.append('image', images.value,)
             data.append('buy_link', bookInfo.buy_link,)
-
-            const config = {
+            console.log('Upload image path is',images.value)
+            
+            axios.post('/save_book', data, {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
-            }
-            axios.post('/save_book', data, config)
+            })
             .then( 
                 (res) => console.log('Post Ok', res.data)
             )
