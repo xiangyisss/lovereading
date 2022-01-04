@@ -33,7 +33,7 @@ button {
     border: none;
     background: none;
     font-size: 1rem;
-    color: rgb(240, 33, 33);
+    color: rgb(201, 81, 81);
     cursor: pointer;
 }
 </style>

@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('genre');
             $table->string('image');
             $table->string('buy_link')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

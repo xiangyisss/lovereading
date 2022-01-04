@@ -6,16 +6,14 @@
             </div>
             <div class="menu-list">
                 <Link href="/about">About</Link>
-                <span v-if="username">
-
-                <Logout />
-                <Link href="/add_new_book">Add new book </Link>
-                </span>
-                <span v-else>
-
-                <Link href="/login_form" >Login</Link>
-                <Link href="/register_form"  >Register</Link>
-                </span>
+                <div v-if="username" class="logout">
+                    <Logout />
+                    <Link href="/add_new_book">Add new book </Link>
+                </div>
+                <div v-else class="login">
+                    <Link href="/login_form" >Login</Link>
+                    <Link href="/register_form"  >Register</Link>
+                </div>
             </div>
         </header>
         <article>
@@ -68,28 +66,35 @@ main {
     /* background-color: blue; */
 }
 header {
-    width: 90%;
+    width: 100%;
     height: 100%;
     /* background-color: green; */
     margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.menu-list {
+.menu-list{
     width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.menu-list > * {
-    padding-right: 1.5rem;
-}
 a {
     text-decoration: none;
-    color: rgb(240, 33, 33);
+    color: rgb(201, 81, 81);
     /* padding-right: 1.5rem; */
     font-weight: 600;
     display: block;
+}
+.login,
+.logout {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>

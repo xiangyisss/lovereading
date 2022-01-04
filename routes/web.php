@@ -27,7 +27,9 @@ Route::get('/', [ BookController::class, 'index']);
 Route::get('/books', [ BookController::class, 'getBooks']);
 Route::get('/add_new_book', [ BookController::class, 'addNewBook']);
 Route::post('/save_book', [ BookController::class, 'storeBook']);
-
+Route::get('/books/{id}', [ BookController::class, 'detailPage']);
+Route::put('/books/{id}', [ BookController::class, 'updateBook']);
+Route::delete('/books/{id}', [ BookController::class, 'deleteBook']);
 // Route::get('/about', [ BookController::class, 'index']);
 Route::get('/login_form', [ LoginController::class, 'index']);
 Route::get('/register_form', [ RegisterController::class, 'index']);
