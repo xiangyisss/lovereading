@@ -27,6 +27,7 @@ import { defineComponent, reactive } from "vue";
 import MasterLayout from "../Master/MasterLayout.vue";
 import axios from "axios";
 import AuthUser from '../../stores/AuthUser';
+import { Inertia } from '@inertiajs/inertia';
 
 
 export default defineComponent({
@@ -48,6 +49,11 @@ export default defineComponent({
                     .then(
                         res => {
                             authUser(res.data.name, res.data.email, res.data.id)
+                        }
+                    )
+                    .then(
+                        () => {
+                            Inertia.visit('/')
                         }
                     )
                 )

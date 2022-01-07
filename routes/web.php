@@ -23,9 +23,10 @@ use App\Http\Controllers\RegisterController;
 
 
 
-Route::get('/', [ BookController::class, 'index']);
-Route::get('/books', [ BookController::class, 'getBooks']);
+Route::get('/', [ BookController::class, 'index'])->name('main-page');
 Route::get('/add_new_book', [ BookController::class, 'addNewBook']);
+Route::get('/update_book/{id}', [BookController::class, 'editBook']);
+
 Route::post('/save_book', [ BookController::class, 'storeBook']);
 Route::get('/books/{id}', [ BookController::class, 'detailPage']);
 Route::put('/books/{id}', [ BookController::class, 'updateBook']);

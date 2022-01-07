@@ -15,36 +15,32 @@
             <input type="file"  ref="images"  name="image" id="image" @change="imageUpload($event)" >
             <label for="image">Link</label>
             <input type="text" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
-            <button>Add new book</button>
+            <button>Submit</button>
         </form>
     </div>
 </template>
 
 <script lang="ts">
+import MasterLayout from '../../Master/MasterLayout.vue'
 import { defineComponent, reactive, ref } from 'vue'
+import axios from 'axios'
+import { Inertia } from '@inertiajs/inertia';
 
-interface Book {
-    title: string
-    author: string
-    description: string
-    genre: string
-    image: string
-    buy_link:string
-}
+// interface Book {
+//     title: string
+//     author: string
+//     description: string
+//     genre: string
+//     image: string
+//     buy_link:string
+// }
 
 export default defineComponent({
+    layout: MasterLayout,
     props: {
-        books: {
+        book: {
             type: Object ,
-            // data : {
-            //     title : '',
-            //     author : '',
-            //     description :'',
-            //     genre : '',
-            //     buy_link : '',
-            //     image: ''
-            // }
-            
+            required: false  
         }
     },
     // emits:['sendBookData'],
@@ -58,23 +54,14 @@ export default defineComponent({
             } 
         }
         const bookInfo = reactive({
-            title : '',
-            author : '',
-            description :'',
-            genre : '',
-            buy_link : ''
+            title : props.book?.title || '',
+            author : props.book?.author || '',
+            description : props.book?.description || '',
+            genre : props.book?.genre || '',
+            buy_link : props.book?.buy_link || '',
         })
 
         const sendBookData = () => {
-            
-            // let bookData = {
-            //     title : bookInfo.title,
-            //     author : bookInfo.author,
-            //     description : bookInfo.description,
-            //     genre : bookInfo.genre,
-            //     image : images,
-            //     buy_link : bookInfo.buy_link,
-            // }
 
             let bookData = new FormData();
             bookData.append('title', bookInfo.title,)
@@ -83,8 +70,34 @@ export default defineComponent({
             bookData.append('genre', bookInfo.genre,)
             bookData.append('image', images.value,)
             bookData.append('buy_link', bookInfo.buy_link,)
-            // console.log('check data', bookData)
-            emit('emitData', bookData)
+
+            if( props.book ) {
+                axios.put(`/books/${props.book?.id}`, bookInfo)
+                .then(
+                    res => Inertia.visit(`/books/${props.book?.id}`)
+                    // res => console.log('update ok', res.data)
+                )
+                
+            } else {
+                axios.post('/save_book', bookData, {
+                    headers: {
+                        "content-type": "multipart/form-data",
+                    },
+                })
+                .then(
+                    res => Inertia.visit('/')
+                )
+            }
+
+        }    
+
+        const submitBookInfo = () => {
+            
+            // axios.post('/save_book', bookData, {
+            //         headers: {
+            //             "content-type": "multipart/form-data",
+            //         },
+            //     })
         }
 
         return { images, imageUpload, bookInfo, sendBookData}

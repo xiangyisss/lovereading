@@ -4,9 +4,6 @@
         
         
         <div class="book-box" v-for="book in books" :key="book.id">
-            
-            <button class="btn btn-primary" type="submit" @click="editBook">Edit</button>
-            <button class="btn btn-primary" type="submit">Delete</button>
             <p class="title" >Title:{{book.title}}</p>
             <p class="author">Author {{book.author}}</p>
             <p class="description">Description {{book.description}}</p>
@@ -21,9 +18,8 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
-import { defineComponent, onMounted, ref } from 'vue'
-import MasterLayout from '../Master/MasterLayout.vue';
+import { defineComponent } from 'vue'
+import MasterLayout from '../../Master/MasterLayout.vue';
 import { Link } from '@inertiajs/inertia-vue3'
 
 interface Book {
@@ -39,24 +35,29 @@ export default defineComponent({
     name: 'BookIndex',
     layout: MasterLayout,
     components:{ Link },
-
-    setup () {
-        const books = ref('')
-        onMounted(() => {
-            axios.get('/books')
-            .then(
-                (res) => {
-                    books.value = res.data
-                }                
-            )
-            .catch(err => console.log(err))
-        })
-
-        const goToBookDetail = (id:number) => {
-            console.log(id)
+    props: {
+        books:{
+            type: Object,
+            required: true
         }
+    },
+    setup () {
+        // const books = ref('')
+        // onMounted(() => {
+        //     axios.get('/books')
+        //     .then(
+        //         (res) => {
+        //             books.value = res.data
+        //         }                
+        //     )
+        //     .catch(err => console.log(err))
+        // })
 
-        return { books, goToBookDetail}
+        // const goToBookDetail = (id:number) => {
+        //     console.log(id)
+        // }
+
+        return { }
     }
 })
 </script>

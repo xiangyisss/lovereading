@@ -24,11 +24,11 @@ class UpdateBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'string|nullable|max:255',
-            'author' => 'string|nullable',
-            'description' => 'string|nullable',
-            'genre' => 'string|nullable',
-            'image' => 'image|nullable',
+            'title' => 'string|required|max:255',
+            'author' => 'string|required',
+            'description' => 'string|required',
+            'genre' => 'string|required',
+            'image' => 'image',
             'buy_link' => 'string|nullable',
             'user_id' => 'integer',
         ];
