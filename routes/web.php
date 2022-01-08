@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
@@ -27,8 +28,8 @@ Route::get('/', [ BookController::class, 'index'])->name('main-page');
 Route::get('/add_new_book', [ BookController::class, 'addNewBook']);
 Route::get('/update_book/{id}', [BookController::class, 'editBook']);
 
-Route::post('/save_book', [ BookController::class, 'storeBook']);
 Route::get('/books/{id}', [ BookController::class, 'detailPage']);
+Route::post('/save_book', [ BookController::class, 'createBook']);
 Route::put('/books/{id}', [ BookController::class, 'updateBook']);
 Route::delete('/books/{id}', [ BookController::class, 'deleteBook']);
 // Route::get('/about', [ BookController::class, 'index']);

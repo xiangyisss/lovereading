@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\SaveBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Support\Facades\Redirect;
-use Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Auth\Access\AuthorizationException;
+
 
 class BookController extends Controller
 {
@@ -42,7 +46,7 @@ class BookController extends Controller
     }
 
 
-    public function storeBook(SaveBookRequest $request)
+    public function createBook(SaveBookRequest $request)
     {   
 
         $validData = $request->validated();
@@ -53,23 +57,24 @@ class BookController extends Controller
             'image' => $path, 
         ]);
         $this->book->create($updateData);
-
         return $updateData;
     }
 
     public function updateBook ($bookId, updateBookRequest $request)
-    {
+    {   
+
         $validData = $request->validated();
         $bookInfo = $this->book->find($bookId);
+        $this->authorize('update', $bookInfo);
         $updateBookData = array_merge($validData, [ $bookInfo ]);
         $bookInfo->update($updateBookData);
-        // return $bookInfo;
-        // $this->book->find($bookId)->update($validData);
-        
+
     }
 
     public function deleteBook($bookId)
     {
-        $this->book->find($bookId)->delete();
+        $book = $this->book->find($bookId);
+        $this->authorize('delete', $book);
+        $book->delete();
     }
 }

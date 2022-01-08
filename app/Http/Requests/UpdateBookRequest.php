@@ -15,6 +15,10 @@ class UpdateBookRequest extends FormRequest
     {
         return true;
     }
+    // public function authorize()
+    // {
+    //     return Auth::check();
+    // }
 
     /**
      * Get the validation rules that apply to the request.
