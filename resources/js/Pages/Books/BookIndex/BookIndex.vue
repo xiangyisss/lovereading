@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 >This is the books page</h1>
-        <BookComponent class="book-box" v-for="book in books" :key="book.id"/>
+        <BookComponent class="book-box" :book="book" v-for="book in books" :key="book.id"/>
     </div>
 </template>
 
@@ -9,12 +9,11 @@
 import { defineComponent } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookComponent from './Components/BookComponent.vue'
-import { Link } from '@inertiajs/inertia-vue3'
 
 export default defineComponent({
     name: 'BookIndex',
     layout: MasterLayout,
-    components:{ Link, BookComponent },
+    components:{ BookComponent },
     props: {
         books:{
             type: Array,

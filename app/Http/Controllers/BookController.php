@@ -24,7 +24,7 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->book->get();
-        return Inertia::render('Books/MainBookFolder/BookIndex', compact('books'));
+        return Inertia::render('Books/BookIndex/BookIndex', compact('books'));
     }
 
     public function addNewBook() 
@@ -32,9 +32,10 @@ class BookController extends Controller
         return Inertia::render('Books/Form/CreateOrUpdateInfo.vue');
     }
 
-    public function editBook($bookId)
+    // public function edit($bookId)
+    public function edit(Book $book)
     {
-        $book = $this->book->find($bookId);
+        // $book = $this->book->find($bookId);
         return Inertia::render('Books/Form/CreateOrUpdateInfo.vue', compact('book'));
     }
 
@@ -42,16 +43,14 @@ class BookController extends Controller
     public function detailPage($bookId) 
     {
         $book = Book::find($bookId);
-        return Inertia::render('Books/BookDetailFolder/BookDetail', compact('book'));
+        return Inertia::render('Books/BookDetail/BookDetail', compact('book'));
     }
 
-
-    public function createBook(SaveBookRequest $request)
+    public function create(SaveBookRequest $request)
     {   
 
         $validData = $request->validated();
         $path = $request->file('image')->store('uploads', 'public');
-        $user_id = Auth::user()->id;
         $updateData = array_merge($validData, [            
             'user_id' => Auth::user()->id,
             'image' => $path, 
@@ -60,21 +59,17 @@ class BookController extends Controller
         return $updateData;
     }
 
-    public function updateBook ($bookId, updateBookRequest $request)
+    public function update(Book $book, updateBookRequest $request)
     {   
-
         $validData = $request->validated();
-        $bookInfo = $this->book->find($bookId);
-        $this->authorize('update', $bookInfo);
-        $updateBookData = array_merge($validData, [ $bookInfo ]);
-        $bookInfo->update($updateBookData);
-
+        $this->authorize('update', $book);
+        $book->update($validData);
     }
 
-    public function deleteBook($bookId)
+    public function destroy(Book $book)
     {
-        $book = $this->book->find($bookId);
         $this->authorize('delete', $book);
         $book->delete();
     }
+
 }
