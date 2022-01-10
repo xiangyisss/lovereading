@@ -1,24 +1,33 @@
 <template>
-    <div>
-        <h1>This is login page</h1>
-        <form action="" method="post" @submit.prevent="login">
-            <label for="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                id="email"
-                v-model="loginData.email"
-                required
-            />
-            <label for="password">Password</label>
-            <input
-                type="password"
-                v-model="loginData.password"
-                autocomplete=""
-                required
-            />
-            <button>Login</button>
-        </form>
+    <div class="container mt-5" >
+        <div class="row">
+            <div class="col">
+                <form action="" method="post" @submit.prevent="login" >
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                            class="form-control"
+                            type="email"
+                            name="email"
+                            id="email"
+                            v-model="loginData.email"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input
+                            class="form-control"
+                            type="password"
+                            v-model="loginData.password"
+                            autocomplete=""
+                            required
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 

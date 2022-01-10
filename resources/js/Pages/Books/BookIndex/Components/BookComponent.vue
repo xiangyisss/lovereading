@@ -1,5 +1,5 @@
 <template>
-    <div class="card p-2 shadow p-3 mb-5 bg-body rounded border-0" style="width: 23rem;">
+    <div class="card-grow card p-2 shadow p-3 mb-5 bg-body rounded border-0" style="width: 21rem;">
         <Link :href="`/books/${book.id}`">
         <img :src="`/storage/${book.image}`" style="height:500px" class="card-img-top" alt="...">
         </Link>
@@ -28,5 +28,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.card-grow:hover{
+    transform: scale(1.1);
+}
+.card-grow {
+    transition: all .3s ease;
+}
 </style>

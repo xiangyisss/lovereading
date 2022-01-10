@@ -1,15 +1,21 @@
 <template>
-    <div>
-        <div  v-if="id == book.user_id" >
-            <button class="btn btn-primary" type="submit" @click="editBook">Edit</button>
-            <button class="btn btn-primary" type="submit" @click="deleteBook" >Delete</button>
-        </div>
-        <p class="title" >{{book.title}}</p>
-        <p class="author">By {{book.author}}</p>
-        <p class="description">{{book.description}}</p>
-        <p class="genre">Genre {{book.author}}</p>
-        <img class="image" :src="`/storage/${book.image}`" width="100"/>
-        <a class="buy_link" :href="book.buy_link">Amazon</a>
+    <div class="container mt-5">
+        <div class="row justify-content-center g-5">
+            <div class="col-md-6 col-lg-4">
+                <div  v-if="id == book.user_id" >
+                    <button class="btn btn-primary" type="submit" @click="editBook">Edit</button>
+                    <button class="btn btn-primary" type="submit" @click="deleteBook" >Delete</button>
+                </div>
+                <img class="img-fluid" :src="`/storage/${book.image}`"/>
+            </div>
+            <div class="col-md-6 col-lg-8">
+                        <h1 class="title" >{{book.title}}</h1>
+                        <p class="author">By {{book.author}}</p>
+                        <p class="genre">Genre {{book.genre}}</p>
+                        <p class="description">{{book.description}}</p>
+                        <a class="buy_link" :href="book.buy_link">Amazon</a>
+            </div>   
+        </div>         
     </div>
 </template>
 

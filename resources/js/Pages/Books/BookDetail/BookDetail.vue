@@ -1,7 +1,5 @@
-<template>
-    <div>
-        <BookDetailComponent :book="book"/>
-    </div>
+<template>    
+    <BookDetailComponent :book="book"/>        
 </template>
 
 <script lang="ts">

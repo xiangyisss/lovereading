@@ -17,7 +17,7 @@
             </div>
         </header>
         <article>
-            <slot />
+            <slot/>
         </article>
     </main>
 </template>
@@ -87,9 +87,9 @@ a {
     text-decoration: none;
     color:#f5f5f5;
     /* padding-right: 1.5rem; */
-    font-weight: 700;
+    font-weight: 500;
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 .login,
 .logout {

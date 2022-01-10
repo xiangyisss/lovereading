@@ -1,6 +1,6 @@
 <template>
-    <div class="container-lg mt-5">
-        <div class="row gap-5" >
+    <div class="container-xl mt-5">
+        <div class="row justify-content-center gap-5" >
             <BookComponent class="col-md-4" :book="book" v-for="book in books" :key="book.id"/>
         </div>
     </div>
