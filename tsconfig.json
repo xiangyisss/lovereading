@@ -3,10 +3,15 @@
       "target": "es5",
       "module": "es2020",
       "moduleResolution": "node",
-      "baseUrl": ".",
+      "baseUrl": "resources",
       "strict": true, 
       "skipLibCheck": true,
       "noImplicitAny": false,
+      "paths": {
+          "@/*":[
+              "js/*"
+            ]
+      }
     },
     "include": ["resources/js/**/*"]  // Frontend paths pattern
 }

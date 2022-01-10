@@ -35,7 +35,7 @@ export default defineComponent({
     layout: MasterLayout,
     setup() {
 
-        const { state, authUser } = AuthUser();
+        const { authUser } = AuthUser();
         const loginData = reactive({
             email: "",
             password: "",

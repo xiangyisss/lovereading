@@ -63,10 +63,10 @@ export default defineComponent({
 main {
     width: 100%;
     height: 8vh;
-    /* background-color: blue; */
+    background-color: #232f3e;
 }
 header {
-    width: 100%;
+    width: 80%;
     height: 100%;
     /* background-color: green; */
     margin: 0 auto;
@@ -85,10 +85,11 @@ header {
 }
 a {
     text-decoration: none;
-    color: rgb(201, 81, 81);
+    color:#f5f5f5;
     /* padding-right: 1.5rem; */
-    font-weight: 600;
+    font-weight: 700;
     display: block;
+    font-size: 1.5rem;
 }
 .login,
 .logout {

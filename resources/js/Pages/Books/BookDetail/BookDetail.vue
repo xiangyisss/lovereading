@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>This is Book detail info page.</h1>    
-        <BookDetailComponent :book="book" />
+        <BookDetailComponent :book="book"/>
     </div>
 </template>
 
@@ -14,7 +13,7 @@ export default defineComponent({
     layout: MasterLayout,
     props: {
         book: {
-            type: Array,
+            type: Object,
             required: true
         }
     },

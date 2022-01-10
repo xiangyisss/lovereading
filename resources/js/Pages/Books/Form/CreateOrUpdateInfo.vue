@@ -26,15 +26,6 @@ import { defineComponent, reactive, ref } from 'vue'
 import axios from 'axios'
 import { Inertia } from '@inertiajs/inertia';
 
-// interface Book {
-//     title: string
-//     author: string
-//     description: string
-//     genre: string
-//     image: string
-//     buy_link:string
-// }
-
 export default defineComponent({
     layout: MasterLayout,
     props: {
@@ -43,7 +34,7 @@ export default defineComponent({
             required: false  
         }
     },
-    // emits:['sendBookData'],
+
     setup ( props, { emit }) {
         const images = ref();
         const imageUpload = async ($event : Event) => {
@@ -75,7 +66,6 @@ export default defineComponent({
                 axios.put(`/books/${props.book?.id}`, bookInfo)
                 .then(
                     res => Inertia.visit(`/books/${props.book?.id}`)
-                    // res => console.log('update ok', res.data)
                 )
                 
             } else {
@@ -90,15 +80,6 @@ export default defineComponent({
             }
 
         }    
-
-        const submitBookInfo = () => {
-            
-            // axios.post('/save_book', bookData, {
-            //         headers: {
-            //             "content-type": "multipart/form-data",
-            //         },
-            //     })
-        }
 
         return { images, imageUpload, bookInfo, sendBookData}
     }

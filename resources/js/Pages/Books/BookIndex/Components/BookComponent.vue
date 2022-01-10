@@ -1,28 +1,19 @@
 <template>
-    <div class="book-box" >
-        <p class="title" >Title:{{book.title}}</p>
-        <p class="author">Author {{book.author}}</p>
-        <p class="description">Description {{book.description}}</p>
-        <p class="genre">Genre {{book.genre}}</p>
+    <div class="card p-2 shadow p-3 mb-5 bg-body rounded border-0" style="width: 23rem;">
         <Link :href="`/books/${book.id}`">
-            <img class="image" :src="`/storage/${book.image}`" width="100"/>
+        <img :src="`/storage/${book.image}`" style="height:500px" class="card-img-top" alt="...">
         </Link>
-        <a class="buy_link" :href="book.buy_link">Buy Link </a>
+        <div class="card-body">
+            <h5 class="card-title">{{book.title}}</h5>
+            <p class="card-text">By {{book.author}}</p>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { Link } from '@inertiajs/inertia-vue3'
-
-interface Book {
-    title: string
-    author: string
-    description: string
-    genre: string
-    image: string
-    buy_link:string
-}
+import { Book } from '@/interface/Book'
 
 export default defineComponent({
     name: 'BookComponent',
@@ -35,3 +26,7 @@ export default defineComponent({
     },
 })
 </script>
+
+<style scoped>
+
+</style>

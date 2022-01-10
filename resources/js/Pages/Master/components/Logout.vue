@@ -7,18 +7,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import axios from 'axios'
-import AuthUser from '../../../stores/AuthUser'
+import { Inertia } from '@inertiajs/inertia'
+
 
 export default defineComponent({
     setup () {
-
-        const { state } = AuthUser();
 
         const logout = () => {
             axios.post('/logout')
             .then (
                 () => {
-                    window.location.href = '/'
+                    Inertia.visit('/')
                 }
             )
         }
@@ -32,8 +31,10 @@ export default defineComponent({
 button {
     border: none;
     background: none;
-    font-size: 1rem;
-    color: rgb(201, 81, 81);
+    color: #f5f5f5;
     cursor: pointer;
+    font-weight: 700;
+    display: block;
+    font-size: 1.5rem;
 }
 </style>
