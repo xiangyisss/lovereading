@@ -19518,6 +19518,12 @@ var __assign = undefined && undefined.__assign || function () {
     }
   },
   setup: function setup(props) {
+    var showWriteReviewContainer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+
+    var show = function show() {
+      showWriteReviewContainer.value = !showWriteReviewContainer.value;
+    };
+
     var reviewInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       review: '',
       book_id: props.book.id
@@ -19549,7 +19555,9 @@ var __assign = undefined && undefined.__assign || function () {
     return __assign(__assign({}, state), {
       postReview: postReview,
       reviewInfo: reviewInfo,
-      checkIfUserCommented: checkIfUserCommented
+      checkIfUserCommented: checkIfUserCommented,
+      show: show,
+      showWriteReviewContainer: showWriteReviewContainer
     });
   }
 }));
@@ -20490,6 +20498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
+  key: 0,
   "class": "mb-3"
 };
 
@@ -20513,7 +20522,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     action: "",
     method: "post",
     "class": "mt-5 mb-5",
-    onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)( //@ts-ignore
+    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)( //@ts-ignore
     function () {
       var args = [];
 
@@ -20523,19 +20532,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.postReview && _ctx.postReview.apply(_ctx, args);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = //@ts-ignore
+    function () {
+      var args = [];
+
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+
+      return _ctx.show && _ctx.show.apply(_ctx, args);
+    })
+  }, "Write a review"), !_ctx.showWriteReviewContainer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     name: "review",
     "class": "form-control",
     id: "review",
     cols: "30",
     rows: "5",
     placeholder: "Enter your review",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.reviewInfo.review = $event;
     })
   }, "\n            ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.reviewInfo.review]])]), _hoisted_3], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.reviewInfo.review]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_3], 32
   /* HYDRATE_EVENTS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }

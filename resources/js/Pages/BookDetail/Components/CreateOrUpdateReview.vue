@@ -6,7 +6,8 @@
         @submit.prevent="postReview"
          v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"
     >
-        <div class="mb-3">
+        <button @click="show">Write a review</button>
+        <div class="mb-3" v-if="!showWriteReviewContainer">
             <label for="review" class="form-label">What did you think?</label>
             <textarea
                 name="review"
@@ -24,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, PropType } from "vue";
+import { defineComponent, reactive, PropType, ref } from "vue";
 import axios from "axios";
 import { Book } from "@/interface/Book";
 import { Review } from "@/interface/Review";
@@ -43,6 +44,10 @@ export default defineComponent({
         },    
     },
     setup(props: Props) {
+        const showWriteReviewContainer = ref(false)
+        const show = () => {
+            showWriteReviewContainer.value = !showWriteReviewContainer.value
+        }
         const reviewInfo = reactive({
             review: '',
             book_id: props.book.id,
@@ -70,7 +75,10 @@ export default defineComponent({
                 return review.hasOwnProperty(key) && review[key] === val
             })
         }
-        return { ...state, postReview, reviewInfo, checkIfUserCommented };
+        return { ...state, postReview, reviewInfo, 
+            checkIfUserCommented, show,
+            showWriteReviewContainer
+        };
     },
 });
 
