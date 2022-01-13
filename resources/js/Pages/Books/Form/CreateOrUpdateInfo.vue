@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h1>This is Form Components</h1>
+    <div class="container-md">
         <!-- <form  enctype="multipart/form-data"  @submit.prevent="$emit('sendBookData', bookData)"> -->
         <form  enctype="multipart/form-data"  @submit.prevent="sendBookData">
             <label for="title">Title</label>
@@ -69,7 +68,7 @@ export default defineComponent({
                 )
                 
             } else {
-                axios.post('/save_book', bookData, {
+                axios.post('/books/save_book', bookData, {
                     headers: {
                         "content-type": "multipart/form-data",
                     },

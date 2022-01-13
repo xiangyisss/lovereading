@@ -9,11 +9,12 @@
                 <img class="img-fluid" :src="`/storage/${book.image}`"/>
             </div>
             <div class="col-md-6 col-lg-8">
-                        <h1 class="title" >{{book.title}}</h1>
-                        <p class="author">By {{book.author}}</p>
-                        <p class="genre">Genre {{book.genre}}</p>
-                        <p class="description">{{book.description}}</p>
-                        <a class="buy_link" :href="book.buy_link">Amazon</a>
+                <h1 class="title" >Book Id:{{book.id}}</h1>
+                <h1 class="title" >{{book.title}}</h1>
+                <p class="author">By {{book.author}}</p>
+                <p class="genre">Genre {{book.genre}}</p>
+                <p class="description">{{book.description}}</p>
+                <a class="buy_link" :href="book.buy_link">Amazon</a>
             </div>   
         </div>         
     </div>
@@ -38,7 +39,7 @@ export default defineComponent({
         const { state } = AuthUser();
 
         const editBook = () => {
-            Inertia.visit(`/update_book/${props.book.id}`)
+            Inertia.visit(`/books/edit/${props.book.id}`)
         }
 
         const deleteBook = () => {

@@ -1,11 +1,13 @@
 <template>    
-    <BookDetailComponent :book="book"/>        
+    <BookDetailComponent :book="book"/>     
+    <BookReview :book="book"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookDetailComponent from './Components/BookDetailComponent.vue'
+import BookReview from '../BookReview/BookReview.vue'
 
 export default defineComponent({
     layout: MasterLayout,
@@ -15,7 +17,7 @@ export default defineComponent({
             required: true
         }
     },
-    components: { BookDetailComponent },
+    components: { BookDetailComponent, BookReview },
     setup () {
 
     }

@@ -6,12 +6,12 @@ use App\Models\Book;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+// use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\SaveBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Auth\Access\AuthorizationException;
+// use Illuminate\Auth\Access\AuthorizationException;
 
 
 class BookController extends Controller
