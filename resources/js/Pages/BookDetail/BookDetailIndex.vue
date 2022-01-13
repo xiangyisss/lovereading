@@ -7,7 +7,7 @@
 import { defineComponent } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookDetailComponent from './Components/BookDetailComponent.vue'
-import BookReview from '../BookReview/BookReview.vue'
+import BookReview from './Components/BookReview.vue'
 
 export default defineComponent({
     layout: MasterLayout,

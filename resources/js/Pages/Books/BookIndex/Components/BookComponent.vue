@@ -37,6 +37,6 @@ export default defineComponent({
     transition: transform .3s;
 }
 #container:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 </style>

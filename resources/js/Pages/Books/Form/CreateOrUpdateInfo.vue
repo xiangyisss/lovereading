@@ -1,20 +1,33 @@
 <template>
-    <div class="container-md">
+    <div class="container mt-5">
         <!-- <form  enctype="multipart/form-data"  @submit.prevent="$emit('sendBookData', bookData)"> -->
-        <form  enctype="multipart/form-data"  @submit.prevent="sendBookData">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" v-model="bookInfo.title" required>
-            <label for="author">Author</label>
-            <input type="test" name="author" id="author" v-model="bookInfo.author" required>
-            <label for="description">Description</label>
-            <textarea type="text" name="description" id="description" v-model="bookInfo.description" > </textarea>
-            <label for="genre">Genre</label>
-            <input type="text" name="genre" id="genre" v-model="bookInfo.genre" required>
-            <label for="image">Image</label>
-            <input type="file"  ref="images"  name="image" id="image" @change="imageUpload($event)" >
-            <label for="image">Link</label>
-            <input type="text" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
-            <button>Submit</button>
+        <form  enctype="multipart/form-data" @submit.prevent="sendBookData" >
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" id="title" v-model="bookInfo.title" required>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="test" class="form-control" name="author" id="author" v-model="bookInfo.author" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" name="description" id="description" v-model="bookInfo.description" > </textarea>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" class="form-control" name="genre" id="genre" v-model="bookInfo.genre" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" ref="images"  name="image" id="image" @change="imageUpload($event)" >
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Link</label>
+                <input type="text" class="form-control" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <button type="submit" class="btn btn-primary" @click="cancelSendData">Cancel</button>
         </form>
     </div>
 </template>
@@ -24,6 +37,8 @@ import MasterLayout from '../../Master/MasterLayout.vue'
 import { defineComponent, reactive, ref } from 'vue'
 import axios from 'axios'
 import { Inertia } from '@inertiajs/inertia';
+import {Book} from '@/interface/Book'
+import { constructFormData } from '@/Utils/helpers'
 
 export default defineComponent({
     layout: MasterLayout,
@@ -34,7 +49,7 @@ export default defineComponent({
         }
     },
 
-    setup ( props, { emit }) {
+    setup ( props ) {
         const images = ref();
         const imageUpload = async ($event : Event) => {
             const target = $event.target as HTMLInputElement
@@ -51,33 +66,29 @@ export default defineComponent({
             buy_link : props.book?.buy_link || '',
         })
 
+        const updateBook = (bookInfo: Book) => {
+            axios.put(`/books/${props.book?.id}`, bookInfo)
+                .then(
+                    () => Inertia.visit(`/books/${props.book?.id}`)
+                )
+        }
+
+        const saveBook = (bookInfo: Book) => {
+            axios.post('/books/save_book', 
+                constructFormData(
+                    bookInfo, 
+                    {key: 'image', value: images.value}
+                ))
+                .then(
+                    () => Inertia.visit('/')
+                )
+                .catch (
+                    err => console.log(err.message)
+                )
+        }
+
         const sendBookData = () => {
-
-            let bookData = new FormData();
-            bookData.append('title', bookInfo.title,)
-            bookData.append('author', bookInfo.author,)
-            bookData.append('description', bookInfo.description,)
-            bookData.append('genre', bookInfo.genre,)
-            bookData.append('image', images.value,)
-            bookData.append('buy_link', bookInfo.buy_link,)
-
-            if( props.book ) {
-                axios.put(`/books/${props.book?.id}`, bookInfo)
-                .then(
-                    res => Inertia.visit(`/books/${props.book?.id}`)
-                )
-                
-            } else {
-                axios.post('/books/save_book', bookData, {
-                    headers: {
-                        "content-type": "multipart/form-data",
-                    },
-                })
-                .then(
-                    res => Inertia.visit('/')
-                )
-            }
-
+            props.book ? updateBook(bookInfo) : saveBook(bookInfo)
         }    
 
         return { images, imageUpload, bookInfo, sendBookData}

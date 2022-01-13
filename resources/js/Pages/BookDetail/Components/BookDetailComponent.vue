@@ -24,7 +24,7 @@
 import { defineComponent, PropType } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
 import axios from 'axios'
-import AuthUser from '../../../../stores/AuthUser'
+import AuthUser from '../../../stores/AuthUser'
 import { Book } from '@/interface/Book'
 
 export default defineComponent({

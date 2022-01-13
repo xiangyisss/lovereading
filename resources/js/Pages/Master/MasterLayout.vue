@@ -8,7 +8,7 @@
                 <Link href="/about">About</Link>
                 <div v-if="username" class="logout">
                     <Logout />
-                    <Link href="/add_new_book">Add new book </Link>
+                    <Link href="/books/add_new_book">Add new book </Link>
                 </div>
                 <div v-else class="login">
                     <Link href="/login_form" >Login</Link>

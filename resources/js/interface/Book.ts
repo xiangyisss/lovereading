@@ -3,8 +3,8 @@ export interface Book{
     author: string
     description: string
     genre: string
-    image: string
+    image?: string
     buy_link: string
-    id: number
-    user_id: number
+    id?: number
+    user_id?: number
 }

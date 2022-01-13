@@ -43,12 +43,11 @@ class BookController extends Controller
     public function detailPage($bookId) 
     {
         $book = Book::find($bookId);
-        return Inertia::render('Books/BookDetail/BookDetail', compact('book'));
+        return Inertia::render('BookDetail/BookDetailIndex', compact('book'));
     }
 
     public function create(SaveBookRequest $request)
     {   
-
         $validData = $request->validated();
         $path = $request->file('image')->store('uploads', 'public');
         $updateData = array_merge($validData, [            
@@ -61,6 +60,7 @@ class BookController extends Controller
 
     public function update(Book $book, updateBookRequest $request)
     {   
+        dd('Trying to update');
         $validData = $request->validated();
         $this->authorize('update', $book);
         $book->update($validData);
