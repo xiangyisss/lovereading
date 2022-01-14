@@ -11,22 +11,25 @@ use App\Http\Requests\SendReviewRequest;
  
 
 class ReviewController extends Controller
-{
-    public function __construct(Review $review, Book $book)
+{   
+    public function __construct(Review $review)
     {
         $this->review = $review;
-        $this->book = $book;
+    }
+
+    public function index()
+    {
+        $reviews = $this->review->get();
+        return $reviews;
     }
 
     public function createReview(SendReviewRequest $request)
     {   
-
         $validData = $request->validated();
         $createdReview = $this->review
         ->create(
             array_merge(
-                $validData, 
-                ['user_id' => Auth::user()->id]
+                $validData, ['user_id' => Auth::user()->id]
             )
         );
         return $createdReview;

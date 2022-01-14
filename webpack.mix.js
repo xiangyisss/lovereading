@@ -6,5 +6,5 @@ mix.ts('resources/js/app.ts', 'public/js').vue()
         //
     ])
     .alias({
-        '@': path.join(__dirname, 'resources/js/Pages')
+        '@': path.join(__dirname, 'resources/js/Pages'),
     });

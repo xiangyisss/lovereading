@@ -25,6 +25,7 @@
 import { defineComponent, reactive, PropType } from "vue";
 import axios from "axios";
 import { Book } from "@/interface/Book";
+import { constructFormData } from '../../../Utils/helpers'
 
 export default defineComponent({
     props: {
@@ -36,12 +37,10 @@ export default defineComponent({
     setup(props) {
         const reviewInfo = reactive({
             review: "",
+            book_id: props.book.id,
         });
         const postReview = () => {
-            axios.post('/books/reviews', {
-                review: reviewInfo.review,
-                book_id: props.book.id
-            })
+            axios.post(`/books/reviews`, constructFormData(reviewInfo))
             .then(
                 res => console.log('post review ok', res.data)
             )

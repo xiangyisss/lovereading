@@ -21,10 +21,7 @@ export default defineComponent({
         }
     },
     components:{ BookComponent },
-    setup () {
-
-        return { }
-    }
+    
 })
 </script>
 

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Inertia\Inertia;
+// use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\SaveBookRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateBookRequest;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 // use Illuminate\Auth\Access\AuthorizationException;
 
 
@@ -42,7 +42,7 @@ class BookController extends Controller
 
     public function detailPage($bookId) 
     {
-        $book = Book::find($bookId);
+        $book = Book::with('reviews')->find($bookId);
         return Inertia::render('BookDetail/BookDetailIndex', compact('book'));
     }
 
@@ -60,7 +60,6 @@ class BookController extends Controller
 
     public function update(Book $book, updateBookRequest $request)
     {   
-        dd('Trying to update');
         $validData = $request->validated();
         $this->authorize('update', $book);
         $book->update($validData);

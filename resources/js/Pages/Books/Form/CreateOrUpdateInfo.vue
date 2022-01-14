@@ -1,6 +1,5 @@
 <template>
     <div class="container mt-5">
-        <!-- <form  enctype="multipart/form-data"  @submit.prevent="$emit('sendBookData', bookData)"> -->
         <form  enctype="multipart/form-data" @submit.prevent="sendBookData" >
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -27,18 +26,18 @@
                 <input type="text" class="form-control" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
             </div>
             <button type="submit" class="btn btn-primary" >Submit</button>
-            <button type="submit" class="btn btn-primary" @click="cancelSendData">Cancel</button>
+            <!-- <button type="submit" class="btn btn-primary" @click="cancelSendData">Cancel</button> -->
         </form>
     </div>
 </template>
 
 <script lang="ts">
-import MasterLayout from '../../Master/MasterLayout.vue'
+import MasterLayout from '@/Master/MasterLayout.vue'
 import { defineComponent, reactive, ref } from 'vue'
 import axios from 'axios'
 import { Inertia } from '@inertiajs/inertia';
-import {Book} from '@/interface/Book'
-import { constructFormData } from '@/Utils/helpers'
+import { Book } from '@/interface/Book'
+import { constructFormData } from '../../../Utils/helpers'
 
 export default defineComponent({
     layout: MasterLayout,
@@ -55,7 +54,6 @@ export default defineComponent({
             const target = $event.target as HTMLInputElement
             if ( target && target.files ) {
                 images.value = target.files[0];
-                console.log('working', images.value)
             } 
         }
         const bookInfo = reactive({
@@ -76,8 +74,10 @@ export default defineComponent({
         const saveBook = (bookInfo: Book) => {
             axios.post('/books/save_book', 
                 constructFormData(
-                    bookInfo, 
-                    {key: 'image', value: images.value}
+                    bookInfo,
+                    [
+                        {key: 'image', value: images.value},
+                    ]
                 ))
                 .then(
                     () => Inertia.visit('/')
