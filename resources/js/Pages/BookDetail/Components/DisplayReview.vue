@@ -3,7 +3,7 @@
         <p>{{review.review}}</p>
         <p>{{review.user_id}}</p>
         <div v-if="id === review.user_id">
-            <button class="btn btn-primary" @click="editReview">Edit</button>
+            <button class="btn btn-primary" @click="emitChangeComment">Edit</button>
             <button class="btn btn-primary" @click="deleteReview">Delete</button>
         </div>
     </div>
@@ -26,7 +26,7 @@ export default defineComponent({
             required: true
         }
     },
-    setup( props ) {
+    setup( props, {emit} ) {
         const { state } = AuthUser()
         const editReview = () => {
             
@@ -44,7 +44,15 @@ export default defineComponent({
                 err => console.log(err.message)
             )
         }
-        return { deleteReview, ...state, editReview };
+        const emitChangeComment = () => {
+            emit('editComment')
+        }
+        return { 
+            deleteReview, 
+            ...state, 
+            editReview,
+            emitChangeComment
+        };
     },
 });
 </script>

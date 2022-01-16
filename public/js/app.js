@@ -19406,6 +19406,18 @@ __webpack_require__.r(__webpack_exports__);
     BookDetailComponent: _Components_BookDetailComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     CreateOrUpdateReview: _Components_CreateOrUpdateReview_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     DisplayReview: _Components_DisplayReview_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
+  setup: function setup(props) {
+    var commentIsVisible = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!props.userHasCommented);
+
+    var changeCommentVisibility = function changeCommentVisibility() {
+      return commentIsVisible.value = !commentIsVisible.value;
+    };
+
+    return {
+      commentIsVisible: commentIsVisible,
+      changeCommentVisibility: changeCommentVisibility
+    };
   }
 }));
 
@@ -19577,7 +19589,8 @@ var __assign = undefined && undefined.__assign || function () {
       required: true
     }
   },
-  setup: function setup(props) {
+  setup: function setup(props, _a) {
+    var emit = _a.emit;
     var state = (0,_stores_AuthUser__WEBPACK_IMPORTED_MODULE_3__["default"])().state;
 
     var editReview = function editReview() {};
@@ -19593,10 +19606,15 @@ var __assign = undefined && undefined.__assign || function () {
       });
     };
 
+    var emitChangeComment = function emitChangeComment() {
+      emit('editComment');
+    };
+
     return __assign(__assign({
       deleteReview: deleteReview
     }, state), {
-      editReview: editReview
+      editReview: editReview,
+      emitChangeComment: emitChangeComment
     });
   }
 }));
@@ -20271,19 +20289,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     book: _ctx.book
   }, null, 8
   /* PROPS */
-  , ["book"]), !_ctx.userHasCommented ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CreateOrUpdateReview, {
-    key: 0,
+  , ["book"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreateOrUpdateReview, {
     book: _ctx.book
   }, null, 8
   /* PROPS */
-  , ["book"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.reviews, function (review) {
+  , ["book"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.commentIsVisible]]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.reviews, function (review) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DisplayReview, {
       key: review.id,
       review: review,
-      book: _ctx.book
+      book: _ctx.book,
+      onEditComment: _ctx.changeCommentVisibility
     }, null, 8
     /* PROPS */
-    , ["review", "book"]);
+    , ["review", "book", "onEditComment"]);
   }), 128
   /* KEYED_FRAGMENT */
   ))]);
@@ -20487,7 +20505,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         args[_i] = arguments[_i];
       }
 
-      return _ctx.editReview && _ctx.editReview.apply(_ctx, args);
+      return _ctx.emitChangeComment && _ctx.emitChangeComment.apply(_ctx, args);
     })
   }, "Edit"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",

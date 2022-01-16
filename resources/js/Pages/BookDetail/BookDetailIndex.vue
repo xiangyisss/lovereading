@@ -3,7 +3,7 @@
 
         <BookDetailComponent :book="book"/>     
         <CreateOrUpdateReview
-            v-if="!userHasCommented"
+            v-show="commentIsVisible"
             :book="book" 
         />
         <DisplayReview 
@@ -11,12 +11,13 @@
             :key="review.id" 
             :review="review"
             :book="book"
+            @editComment="changeCommentVisibility"
         />
     </div>    
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, ref } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookDetailComponent from './Components/BookDetailComponent.vue'
 import CreateOrUpdateReview from './Components/CreateOrUpdateReview.vue'
@@ -40,6 +41,17 @@ export default defineComponent({
         CreateOrUpdateReview, 
         DisplayReview 
     },
+    setup(props){
+        const commentIsVisible = ref(!props.userHasCommented)
+
+        const changeCommentVisibility = () => {
+            return commentIsVisible.value = !commentIsVisible.value
+        }
+        return {
+            commentIsVisible,
+            changeCommentVisibility
+        }
+    }
 })
 </script>
 
