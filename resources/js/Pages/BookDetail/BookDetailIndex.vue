@@ -1,19 +1,27 @@
-<template>    
-    <BookDetailComponent :book="book"/>     
-    <BookReview :book="book"/>
-    <DisplayReview 
-        v-for="review in book.reviews" 
-        :key="review.id" 
-        :review="review"
-    />
+<template>
+    <div class="container">
+
+        <BookDetailComponent :book="book"/>     
+        <CreateOrUpdateReview
+            v-if="!userHasCommented"
+            :book="book" 
+        />
+        <DisplayReview 
+            v-for="review in book.reviews" 
+            :key="review.id" 
+            :review="review"
+            :book="book"
+        />
+    </div>    
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookDetailComponent from './Components/BookDetailComponent.vue'
-import BookReview from './Components/BookReview.vue'
+import CreateOrUpdateReview from './Components/CreateOrUpdateReview.vue'
 import DisplayReview from './Components/DisplayReview.vue'
+
 
 export default defineComponent({
     layout: MasterLayout,
@@ -21,9 +29,17 @@ export default defineComponent({
         book: {
             type: Object,
             required: true
+        },
+        userHasCommented: {
+            type: Boolean,
+            required: true
         }
     },
-    components: { BookDetailComponent, BookReview, DisplayReview },
+    components: { 
+        BookDetailComponent, 
+        CreateOrUpdateReview, 
+        DisplayReview 
+    },
 })
 </script>
 

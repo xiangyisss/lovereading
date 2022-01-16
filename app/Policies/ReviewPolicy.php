@@ -27,12 +27,12 @@ class ReviewPolicy
 
     public function update(User $user, Review $review)
     {
-        //
+        return $user-id === $review->user_id;
     }
 
     public function delete(User $user, Review $review)
     {
-        //
+        return $user->id === $review->user_id;
     }
 
     public function restore(User $user, Review $review)

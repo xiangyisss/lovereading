@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SendReviewRequest extends FormRequest
+class UpdateReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,13 +27,6 @@ class SendReviewRequest extends FormRequest
             'review' => 'string|required',
             'user_id' => 'integer',
             'book_id' => 'integer'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'review' => 'You already reviewed thsi book'
         ];
     }
 }

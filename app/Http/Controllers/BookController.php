@@ -43,7 +43,13 @@ class BookController extends Controller
     public function detailPage($bookId) 
     {
         $book = Book::with('reviews')->find($bookId);
-        return Inertia::render('BookDetail/BookDetailIndex', compact('book'));
+        $userHasCommented = 
+            $book->reviews->where('user_id', Auth::user()->id)->count() > 0 ? true : false;
+        return Inertia::render('BookDetail/BookDetailIndex', 
+            compact(
+                'book',
+                'userHasCommented',
+            ));
     }
 
     public function create(SaveBookRequest $request)
@@ -63,6 +69,7 @@ class BookController extends Controller
         $validData = $request->validated();
         $this->authorize('update', $book);
         $book->update($validData);
+        return $book;
     }
 
     public function destroy(Book $book)

@@ -24,7 +24,9 @@ Route::prefix('books')->group(function() {
     Route::delete('/{book}', [BookController::class, 'destroy']);
     
     Route::prefix('reviews')->middleware('auth')->group(function() {
-        Route::post('/', [ReviewController::class, 'createReview']);
+        Route::post('/', [ReviewController::class, 'create']);
+        Route::put('/edit/{review}', [ReviewController::class, 'edit']);
+        Route::delete('{review}', [ReviewController::class, 'destroy']);
     });
 });
 
