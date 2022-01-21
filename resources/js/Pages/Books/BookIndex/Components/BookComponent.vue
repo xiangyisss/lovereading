@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { Link } from '@inertiajs/inertia-vue3'
 import { Book } from '@/interface/Book'
 

@@ -19397,28 +19397,29 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     },
-    userHasCommented: {
-      type: Boolean,
-      required: true
-    }
+    review: {
+      type: Object
+    } // userHasCommented: {
+    //     type: Boolean,
+    //     required: true
+    // }
+
   },
   components: {
     BookDetailComponent: _Components_BookDetailComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     CreateOrUpdateReview: _Components_CreateOrUpdateReview_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     DisplayReview: _Components_DisplayReview_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  },
-  setup: function setup(props) {
-    var commentIsVisible = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(!props.userHasCommented);
+  } // setup( props ){
+  //     const commentIsVisible = ref(!props.userHasCommented)
+  //     const changeCommentVisibility = () => {
+  //         return commentIsVisible.value = !commentIsVisible.value
+  //     }
+  //     return {
+  //         commentIsVisible,
+  //         changeCommentVisibility
+  //     }
+  // }
 
-    var changeCommentVisibility = function changeCommentVisibility() {
-      return commentIsVisible.value = !commentIsVisible.value;
-    };
-
-    return {
-      commentIsVisible: commentIsVisible,
-      changeCommentVisibility: changeCommentVisibility
-    };
-  }
 }));
 
 /***/ }),
@@ -19504,10 +19505,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Utils_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Utils/helpers */ "./resources/js/Utils/helpers.ts");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _stores_AuthUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../stores/AuthUser */ "./resources/js/stores/AuthUser.ts");
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
 
 
 
- // import { Inertia } from '@inertiajs/inertia'
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   props: {
@@ -19525,7 +19543,7 @@ __webpack_require__.r(__webpack_exports__);
     var postReview = function postReview() {
       axios__WEBPACK_IMPORTED_MODULE_1___default().post("/books/reviews", (0,_Utils_helpers__WEBPACK_IMPORTED_MODULE_2__.constructFormData)(reviewInfo)).then(function () {
         return _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.visit("/books/".concat(props.book.id), {
-          only: ['book'],
+          only: ["book"],
           preserveScroll: true
         });
       })["catch"](function (err) {
@@ -19533,10 +19551,20 @@ __webpack_require__.r(__webpack_exports__);
       });
     };
 
-    return {
-      postReview: postReview,
-      reviewInfo: reviewInfo
+    var state = (0,_stores_AuthUser__WEBPACK_IMPORTED_MODULE_4__["default"])().state;
+
+    var checkIfUserCommented = function checkIfUserCommented(reviews, key, val) {
+      return reviews.some(function (review) {
+        console.log('review', review.hasOwnProperty(key), '+', review[key], '+', val);
+        return review.hasOwnProperty(key) && review[key] === val;
+      });
     };
+
+    return __assign(__assign({}, state), {
+      postReview: postReview,
+      reviewInfo: reviewInfo,
+      checkIfUserCommented: checkIfUserCommented
+    });
   }
 }));
 
@@ -19598,7 +19626,7 @@ var __assign = undefined && undefined.__assign || function () {
     var deleteReview = function deleteReview() {
       axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("reviews/".concat(props.review.id)).then(function () {
         return _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.visit("/books/".concat(props.book.id), {
-          only: ['book'],
+          only: ["book"],
           preserveScroll: true
         });
       })["catch"](function (err) {
@@ -19607,7 +19635,7 @@ var __assign = undefined && undefined.__assign || function () {
     };
 
     var emitChangeComment = function emitChangeComment() {
-      emit('editComment');
+      emit("editComment");
     };
 
     return __assign(__assign({
@@ -20289,22 +20317,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     book: _ctx.book
   }, null, 8
   /* PROPS */
-  , ["book"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreateOrUpdateReview, {
+  , ["book"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreateOrUpdateReview, {
     book: _ctx.book
   }, null, 8
   /* PROPS */
-  , ["book"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.commentIsVisible]]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.reviews, function (review) {
+  , ["book"]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.reviews, function (review) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DisplayReview, {
       key: review.id,
       review: review,
-      book: _ctx.book,
-      onEditComment: _ctx.changeCommentVisibility
+      book: _ctx.book
     }, null, 8
     /* PROPS */
-    , ["review", "book", "onEditComment"]);
+    , ["review", "book"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]);
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" @editComment=\"changeCommentVisibility\" ")]);
 }
 
 /***/ }),
@@ -20433,7 +20460,8 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
+  return !_ctx.checkIfUserCommented(_ctx.book.reviews, 'user_id', _ctx.id) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", {
+    key: 0,
     action: "",
     method: "post",
     "class": "mt-5 mb-5",
@@ -20461,7 +20489,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.reviewInfo.review]])]), _hoisted_3], 32
   /* HYDRATE_EVENTS */
-  );
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
 }
 
 /***/ }),
@@ -20491,9 +20519,9 @@ var _hoisted_2 = {
   key: 0
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.review), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "review: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.review), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.user_id), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "user_id: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.user_id), 1
   /* TEXT */
   ), _ctx.id === _ctx.review.user_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
@@ -20507,7 +20535,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.emitChangeComment && _ctx.emitChangeComment.apply(_ctx, args);
     })
-  }, "Edit"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " Edit "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[1] || (_cache[1] = //@ts-ignore
     function () {
@@ -20519,7 +20547,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       return _ctx.deleteReview && _ctx.deleteReview.apply(_ctx, args);
     })
-  }, "Delete")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, " Delete ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -21041,7 +21069,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbutton[data-v-79e6cf86] {\n    display: inline-block;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nbutton[data-v-79e6cf86] {\n    display: inline-block;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

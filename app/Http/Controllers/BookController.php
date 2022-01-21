@@ -43,12 +43,14 @@ class BookController extends Controller
     public function detailPage($bookId) 
     {
         $book = Book::with('reviews')->find($bookId);
-        $userHasCommented = 
-            $book->reviews->where('user_id', Auth::user()->id)->count() > 0 ? true : false;
+        // $userHasCommented = 
+        //     $book->reviews
+        //         ->where('user_id', Auth::user()->id)
+        //         ->count() > 0 ? true : false;
         return Inertia::render('BookDetail/BookDetailIndex', 
             compact(
                 'book',
-                'userHasCommented',
+                // 'userHasCommented',
             ));
     }
 

@@ -1,9 +1,13 @@
 <template>
-    <form action="" method="post" class="mt-5 mb-5" @submit.prevent="postReview">
+    <form  
+        action=""
+        method="post"
+        class="mt-5 mb-5"
+        @submit.prevent="postReview"
+         v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"
+    >
         <div class="mb-3">
-            <label for="review" class="form-label"
-                >What did you think?</label
-            >
+            <label for="review" class="form-label">What did you think?</label>
             <textarea
                 name="review"
                 class="form-control"
@@ -20,45 +24,55 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, PropType, ref } from "vue";
+import { defineComponent, reactive, PropType } from "vue";
 import axios from "axios";
 import { Book } from "@/interface/Book";
-import { constructFormData } from '../../../Utils/helpers'
-import { Inertia } from '@inertiajs/inertia';
-// import { Inertia } from '@inertiajs/inertia'
-
+import { constructFormData } from "../../../Utils/helpers";
+import { Inertia } from "@inertiajs/inertia";
+import AuthUser from '../../../stores/AuthUser';
 
 export default defineComponent({
     props: {
         book: {
             type: Object as PropType<Book>,
             required: true,
-        },
+        },    
     },
-    setup( props ) {
+    setup(props) {
         const reviewInfo = reactive({
             review: "",
             book_id: props.book.id,
         });
 
         const postReview = () => {
-            axios.post(`/books/reviews`, constructFormData(reviewInfo))
-            .then(
-                () => 
-                Inertia.visit(`/books/${props.book.id}`, {
-                    only: ['book'],
-                    preserveScroll: true
-                })
-
-            )
-            .catch(
-                err => console.log(err.message)
-            )
+            axios
+                .post(`/books/reviews`, constructFormData(reviewInfo))
+                .then(() =>
+                    Inertia.visit(`/books/${props.book.id}`, {
+                        only: ["book"],
+                        preserveScroll: true,
+                    })
+                )
+                .catch((err) => console.log(err.message));
         };
 
-        return { postReview, reviewInfo,   };
+        const { state } = AuthUser()
+
+        type arrayValue = (string | number| boolean)
+
+        const checkIfUserCommented  = 
+            (reviews:any, key:any, val:arrayValue) => {
+            return reviews.some((review : any) => {
+                console.log('review', review.hasOwnProperty(key) ,'+', review[key], '+' ,val)
+                return review.hasOwnProperty(key) && review[key] === val
+            })
+        }
+
+
+        return { ...state, postReview, reviewInfo, checkIfUserCommented };
     },
 });
+
 </script>
 
 <style scoped></style>
