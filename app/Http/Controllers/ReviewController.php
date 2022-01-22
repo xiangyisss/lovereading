@@ -32,13 +32,18 @@ class ReviewController extends Controller
         return ['error' => 'You already reviewd this book'];
     }
 
-    public function edit(Review $review, UpdateReviewRequest $request)
-    {
+    public function edit(Review $review) {
+        return compact('review');
+    }
+
+    public function update(Review $review, UpdateReviewRequest $request)
+    {   
         $validData = $request->validated();
         $this->authorize('update', $review);
         $review->update($validData);
         return $review;
     }
+    
 
     public function destroy(Review $review)
     {

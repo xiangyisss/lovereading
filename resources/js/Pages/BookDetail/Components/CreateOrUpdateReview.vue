@@ -27,10 +27,14 @@
 import { defineComponent, reactive, PropType } from "vue";
 import axios from "axios";
 import { Book } from "@/interface/Book";
+import { Review } from "@/interface/Review";
 import { constructFormData } from "../../../Utils/helpers";
 import { Inertia } from "@inertiajs/inertia";
 import AuthUser from '../../../stores/AuthUser';
 
+interface Props {
+    book: Book
+}
 export default defineComponent({
     props: {
         book: {
@@ -38,9 +42,9 @@ export default defineComponent({
             required: true,
         },    
     },
-    setup(props) {
+    setup(props: Props) {
         const reviewInfo = reactive({
-            review: "",
+            review: '',
             book_id: props.book.id,
         });
 
@@ -59,16 +63,13 @@ export default defineComponent({
         const { state } = AuthUser()
 
         type arrayValue = (string | number| boolean)
-
+        
         const checkIfUserCommented  = 
-            (reviews:any, key:any, val:arrayValue) => {
-            return reviews.some((review : any) => {
-                console.log('review', review.hasOwnProperty(key) ,'+', review[key], '+' ,val)
+            (reviews:Review[] = [], key:string, val:arrayValue) => {
+            return reviews.some((review : Review) => {
                 return review.hasOwnProperty(key) && review[key] === val
             })
         }
-
-
         return { ...state, postReview, reviewInfo, checkIfUserCommented };
     },
 });

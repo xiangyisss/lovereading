@@ -25,7 +25,8 @@ Route::prefix('books')->group(function() {
     
     Route::prefix('reviews')->middleware('auth')->group(function() {
         Route::post('/', [ReviewController::class, 'create']);
-        Route::put('/edit/{review}', [ReviewController::class, 'edit']);
+        Route::get('/edit/{review}', [ReviewController::class, 'edit']);
+        Route::put('/{review}', [ReviewController::class, 'update']);
         Route::delete('{review}', [ReviewController::class, 'destroy']);
     });
 });

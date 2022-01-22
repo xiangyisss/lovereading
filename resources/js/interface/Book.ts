@@ -1,3 +1,4 @@
+import { Review } from './Review'
 export interface Book{
     title: string
     author: string
@@ -7,9 +8,5 @@ export interface Book{
     buy_link: string
     id?: number
     user_id?: number
-    reviews: {
-        review: any
-        user_id: any
-        
-    }
+    reviews?: Review[]
 }

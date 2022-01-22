@@ -4,58 +4,39 @@
         <BookDetailComponent :book="book"/>
         <CreateOrUpdateReview
             :book="book" 
-           
         />
         <DisplayReview 
             v-for="review in book.reviews" 
             :key="review.id" 
-            :review="review"
             :book="book"
+            :review="review"
         />
-            <!-- @editComment="changeCommentVisibility" -->
-    </div>    
+
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookDetailComponent from './Components/BookDetailComponent.vue'
 import CreateOrUpdateReview from './Components/CreateOrUpdateReview.vue'
 import DisplayReview from './Components/DisplayReview.vue'
-import { Review } from '@/interface/Review'
+import { Book } from '@/interface/Book'
+
 
 export default defineComponent({
     layout: MasterLayout,
     props: {
         book: {
-            type: Object,
+            type: Object as PropType<Book>,
             required: true
         },
-        review: {
-            type: Object as PropType<Review>,
-        }
-        // userHasCommented: {
-        //     type: Boolean,
-        //     required: true
-        // }
     },
-    components: { 
-        BookDetailComponent, 
-        CreateOrUpdateReview, 
-        DisplayReview 
-    },
-    // setup( props ){
-    //     const commentIsVisible = ref(!props.userHasCommented)
-
-    //     const changeCommentVisibility = () => {
-    //         return commentIsVisible.value = !commentIsVisible.value
-    //     }
-    //     return {
-    //         commentIsVisible,
-    //         changeCommentVisibility
-    //     }
-    // }
-  
+    components: {
+    BookDetailComponent,
+    CreateOrUpdateReview,
+    DisplayReview
+}
 })
 </script>
 
