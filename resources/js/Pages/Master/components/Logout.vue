@@ -17,7 +17,7 @@ export default defineComponent({
         const logout = () => {
             axios.post('/logout')
             .then(
-                res => authUser(res.data.name, res.data.email, res.data.id)            
+                res => authUser(res.data.name, res.data.email, res.data.id)
             )
             .then(
                 () => {
@@ -41,4 +41,11 @@ button {
     display: block;
     font-size: 1.2rem;
 }
+
+@media (max-width: 550px) {
+    button {
+        font-size: 0.85rem;
+    }
+}
+
 </style>

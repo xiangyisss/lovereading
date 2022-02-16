@@ -10,12 +10,12 @@
                 <p class="genre">Genre {{book.genre}}</p>
                 <p class="description">{{book.description}}</p>
                 <a class="buy_link" :href="book.buy_link">Amazon</a>
-            </div>   
+            </div>
             <div  v-if="id == book.user_id" >
                     <button class="btn btn-primary" type="submit" @click="editBook">Edit</button>
                     <button class="btn btn-primary" type="submit" @click="deleteBook" >Delete</button>
             </div>
-        </div>         
+        </div>
     </div>
 </template>
 
@@ -34,7 +34,7 @@ export default defineComponent({
         }
     },
     setup ( props ) {
-        
+
         const { state } = AuthUser();
 
         const editBook = () => {

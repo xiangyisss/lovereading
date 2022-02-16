@@ -1,8 +1,8 @@
 <template>
     <div @click="editReview">
         <label for="review" class="form-label"></label>
-        <textarea name="review" id="review" 
-            class="form-control" cols="30" rows="2" 
+        <textarea name="review" id="review"
+            class="form-control" cols="30" rows="2"
             v-model="reviewInfo.review" >
         </textarea>
     </div>

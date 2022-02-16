@@ -7,8 +7,8 @@
             <div class="menu-list">
                 <Link href="/about">About</Link>
                 <div v-if="username" class="logout">
+                    <Link href="/books/add_new_book">Add book </Link>
                     <Logout />
-                    <Link href="/books/add_new_book">Add new book </Link>
                 </div>
                 <div v-else class="login">
                     <Link href="/login_form" >Login</Link>
@@ -36,15 +36,14 @@ export default defineComponent({
     },
     setup() {
         //@ts-ignore
-        // console.log(window.csrf_token);
         axios.defaults.headers.common = {
             "X-Requested-With": "XMLHttpRequest",
             //@ts-ignore
             "X-CSRF-TOKEN": window.csrf_token,
         };
-        
+
         const { state, authUser } = AuthUser();
-        
+
         onMounted( () => {
             axios.get('/auth_user')
             .then(
@@ -67,12 +66,11 @@ main {
 }
 header {
     width: 80%;
+    max-width: 1500px;
     height: 100%;
-    /* background-color: green; */
     margin: 0 auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,7 +84,6 @@ header {
 a {
     text-decoration: none;
     color:#f5f5f5;
-    /* padding-right: 1.5rem; */
     font-weight: 500;
     display: block;
     font-size: 1.2rem;
@@ -98,4 +95,46 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+@media (max-width: 900px) {
+    .menu-list {
+        width: 60%
+    }
+    .login, .logout {
+        width: 60%;
+    }
+}
+
+@media (max-width: 640px) {
+    .menu-list {
+        width: 60%
+    }
+    .login, .logout {
+        width: 65%;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .menu-list, .logout {
+        width: 65%
+    }
+
+    .logo a, .menu-list a {
+        font-size: 0.85rem !important;
+    }
+
+}
+
+@media (max-width: 460px) {
+    header {
+        width: 85%;
+    }
+    .login {
+        width: 60%;
+    }
+    .logout {
+        width: 65%;
+    }
+}
+
 </style>

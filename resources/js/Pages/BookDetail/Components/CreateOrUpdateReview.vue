@@ -1,12 +1,11 @@
 <template>
-    <form  
+    <form
         action=""
         method="post"
         class="mt-5 mb-5"
         @submit.prevent="postReview"
          v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"
     >
-        <button @click="show">Write a review</button>
         <div class="mb-3" v-if="!showWriteReviewContainer">
             <label for="review" class="form-label">What did you think?</label>
             <textarea
@@ -41,7 +40,7 @@ export default defineComponent({
         book: {
             type: Object as PropType<Book>,
             required: true,
-        },    
+        },
     },
     setup(props: Props) {
         const showWriteReviewContainer = ref(false)
@@ -68,14 +67,14 @@ export default defineComponent({
         const { state } = AuthUser()
 
         type arrayValue = (string | number| boolean)
-        
-        const checkIfUserCommented  = 
+
+        const checkIfUserCommented  =
             (reviews:Review[] = [], key:string, val:arrayValue) => {
             return reviews.some((review : Review) => {
                 return review.hasOwnProperty(key) && review[key] === val
             })
         }
-        return { ...state, postReview, reviewInfo, 
+        return { ...state, postReview, reviewInfo,
             checkIfUserCommented, show,
             showWriteReviewContainer
         };

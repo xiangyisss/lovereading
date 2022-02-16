@@ -3,11 +3,11 @@
 
         <BookDetailComponent :book="book"/>
         <CreateOrUpdateReview
-            :book="book" 
+            :book="book"
         />
-        <DisplayReview 
-            v-for="review in book.reviews" 
-            :key="review.id" 
+        <DisplayReview
+            v-for="review in book.reviews"
+            :key="review.id"
             :book="book"
             :review="review"
         />
