@@ -22,7 +22,7 @@ Route::prefix('books')->group(function() {
     Route::post('/save_book', [BookController::class, 'create']);
     Route::put('/{book}', [BookController::class, 'update']);
     Route::delete('/{book}', [BookController::class, 'destroy']);
-    
+
     Route::prefix('reviews')->middleware('auth')->group(function() {
         Route::post('/', [ReviewController::class, 'create']);
         Route::get('/edit/{review}', [ReviewController::class, 'edit']);

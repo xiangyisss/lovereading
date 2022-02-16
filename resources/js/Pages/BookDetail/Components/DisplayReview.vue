@@ -1,14 +1,18 @@
 <template>
     <div class="mb-5 review-box">
         <p v-if="!showEditReviewContainer">review: {{ review.review }}</p>
-        <p v-if="!showEditReviewContainer">{{review.updated_at}}</p>
+        <p v-if="!showEditReviewContainer">{{dateFormated}}</p>
         <div v-if="showEditReviewContainer" >
             <label for="review" class="form-label"></label>
             <textarea name="review" id="review"
                 class="form-control" cols="30" rows="2"
                 v-model="reviewInfo.review" >
             </textarea>
-            <button class="btn btn-primary" @click="updateReview">Post</button>
+            <PostButton
+                :review-id="review.id"
+                :book-id="book.id"
+                :review-info="reviewInfo"
+            />
         </div>
 
         <div v-if="id === review.user_id && !showEditReviewContainer">
@@ -25,15 +29,13 @@
 </template>
 
 <script lang="ts">
-import { Inertia } from "@inertiajs/inertia"
 import { defineComponent, PropType, reactive, ref, computed, ComputedRef } from "vue"
-import axios from "axios"
 import AuthUser from "../../../stores/AuthUser"
 import { Review } from '@/interface/Review'
 import { Book } from '@/interface/Book'
 import EditButton from './DisplayReviewComponents/EditButton.vue'
 import DeleteButton from './DisplayReviewComponents/DeleteButton.vue'
-// import { constructFormData } from '../../../Utils/helpers'
+import PostButton from './DisplayReviewComponents/PostButton.vue'
 
 interface Props {
     review: Review,
@@ -43,7 +45,8 @@ interface Props {
 export default defineComponent({
     components: {
         EditButton,
-        DeleteButton
+        DeleteButton,
+        PostButton,
     },
     props: {
         review: {
@@ -71,24 +74,9 @@ export default defineComponent({
             reviewInfo.review = data.review
         }
 
-        const updateReview = () => {
-            axios.put(`reviews/${props.review.id}`, reviewInfo)
-            .then(
-                () => {
-                    Inertia.visit(`/books/${props.book.id}`, {
-                        only: ["book"],
-                        preserveScroll: true,
-                    })
-                }
-            )
-            .catch(
-                err => console.log(err.message)
-            )
-        }
-
         const dateFormated: ComputedRef<string> = computed((): string => {
             const date = new Date(props.review.updated_at)
-            return date.toISOString().slice(0, 10)
+            return date.toLocaleDateString()
         })
 
         return {
@@ -96,7 +84,6 @@ export default defineComponent({
             ...state,
             reviewInfo,
             showEditReviewContainer,
-            updateReview,
             changeShowContainerStatus,
             updateReviewInfo,
         };
