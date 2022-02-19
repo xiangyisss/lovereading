@@ -6,7 +6,7 @@
         </div>
         </Link>
         <div class="card-body">
-            <h5 class="card-title">{{book.title}}</h5>
+            <h6 class="card-title">{{book.title}}</h6>
             <p class="card-text mt-2"> <span>By</span>   {{book.author}}</p>
         </div>
     </div>
@@ -30,16 +30,23 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#container {
-    overflow: hidden;
-}
-#container img {
-    transition: transform .3s;
-}
-#container:hover img {
-    transform: scale(1.03);
-}
-span {
-    font-weight: 500;
-}
+    #container {
+        overflow: hidden;
+    }
+    #container img {
+        transition: transform .3s;
+    }
+    #container:hover img {
+        transform: scale(1.03);
+    }
+    span {
+        font-weight: 500;
+    }
+    h6{
+        font-family: 'Libre Caslon Text', serif;
+        font-weight: 600;
+    }
+    p,span {
+        color: #75625a;
+    }
 </style>

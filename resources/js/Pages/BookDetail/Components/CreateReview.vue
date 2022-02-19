@@ -16,7 +16,7 @@
                     id="review"
                     cols="30"
                     rows="5"
-                    placeholder="Enter your review"
+                    placeholder="What did you think?"
                     v-model="reviewInfo.review"
                 >
                 </textarea>
@@ -113,11 +113,12 @@ export default defineComponent({
         box-shadow: none;
     }
     button {
-        padding: 0.5rem;
+        padding: 0.25rem 0.5rem;
         background-color: #4B79A1;
         border-radius: 4px;
         color: whitesmoke;
         border: none;
+
     }
 
 </style>

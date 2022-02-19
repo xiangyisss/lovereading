@@ -1,10 +1,10 @@
 <template>
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center g-5">
-            <div class="col-md-6 col-lg-4" >
+            <div class="col-md-8 col-lg-6 col-xl-4" >
                 <img class="img-fluid" :src="`/storage/${book.image}`"/>
             </div>
-            <div class="col-md-6 col-lg-8 bookdetails">
+            <div class="col-md-12 col-lg-6 col-xl-8 d-flex flex-column justify-content-center bookdetails">
                 <h1 class="title" >{{book.title}}</h1>
                 <div class="edit-buttons" v-if="id == book.user_id" >
                         <button type="submit" @click="editBook">Edit</button>
@@ -16,8 +16,6 @@
                 <a class="buy_link" :href="book.buy_link">Get from Amazon</a>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -60,11 +58,14 @@ export default defineComponent({
         font-weight: 600;
     }
     .bookdetails a {
-        padding: 0.5rem;
-        background-color: #4B79A1;
+        width: 11rem;
+        padding: 0.25rem 0.5rem;
+        text-align: center;
+        background-color: transparent;
         border-radius: 4px;
         text-decoration: none;
-        color: whitesmoke;
+        color: #4B79A1;
+        border: 1px solid #4B79A1;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
     .bookdetails> * {
@@ -82,5 +83,10 @@ export default defineComponent({
         display: flex;
         justify-content: space-between;
     }
-
+    h1, p, span {
+        font-family: 'Libre Caslon Text', serif;
+    }
+    img {
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    }
 </style>

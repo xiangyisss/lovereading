@@ -1,6 +1,6 @@
 <template>
-    <div class="alert alert-danger" role="alert">
-        You need an account to write a review.
+    <div class="alert alert-danger mt-3" role="alert">
+        You need to login to write a review.
     </div>
 </template>
 

@@ -20,5 +20,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+    h1, h5 {
+        font-family: 'Montserrat', sans-serif;
+    }
 </style>

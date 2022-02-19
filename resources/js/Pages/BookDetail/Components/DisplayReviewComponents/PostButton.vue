@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-primary" @click="postReview">Post Review</button>
+    <button @click="postReview">Post Review</button>
 </template>
 
 <script setup lang="ts">
@@ -29,3 +29,13 @@
             )
         }
 </script>
+
+<style scoped>
+    button {
+        padding: 0.25rem 0.5rem;
+        border: 1px solid #4B79A1;
+        border-radius: 4px;
+        background-color: transparent;
+        color: black;
+    }
+</style>

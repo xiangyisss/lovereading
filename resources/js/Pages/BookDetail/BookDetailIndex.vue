@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <BookDetailComponent :book="book"/>
+        <hr size="4" color=black>
         <CreateReview
             :book="book"
         />
@@ -36,4 +37,5 @@ export default defineComponent({
 }
 })
 </script>
+
 

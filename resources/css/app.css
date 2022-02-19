@@ -2,8 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "EB Garamond", serif;
-
+    color: #2C1810;
+    /* font-family: "EB Garamond", serif; */
+    font-family: 'Libre Caslon Text', serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 html,body {
@@ -16,4 +18,5 @@ html,body {
     height: inherit;
     display: flex;
     flex-direction: column;
+
 }

@@ -65,9 +65,15 @@ export default defineComponent({
 
 header {
     width: 100%;
-    height: 8vh;
-    background-color: #232f3e;
+    height: 6vh;
+    background-color: #DAAA63;
     flex-shrink: 0;
+    font-family: 'Montserrat', sans-serif;;
+}
+.logo a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2C1810;
 }
 .menu-wrapper {
     width: 80%;
@@ -80,13 +86,15 @@ header {
 }
 main {
     flex: 1 0 auto;
+    width: 70%;
+    margin: 0 auto;
 }
 
 footer {
     width: 100%;
-    height: 60px;
-    padding: 1rem;
-    background-color: #232f3e;
+    height: 50px;
+    line-height: 50px;
+    background-color: #DAAA63;
     color: whitesmoke;
     text-align: center;
     flex-shrink: 0;
@@ -102,7 +110,7 @@ a {
     color:#f5f5f5;
     font-weight: 500;
     display: block;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .login,
 .logout {
