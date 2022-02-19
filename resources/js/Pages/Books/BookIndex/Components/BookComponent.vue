@@ -7,7 +7,7 @@
         </Link>
         <div class="card-body">
             <h5 class="card-title">{{book.title}}</h5>
-            <p class="card-text">By {{book.author}}</p>
+            <p class="card-text mt-2"> <span>By</span>   {{book.author}}</p>
         </div>
     </div>
 </template>
@@ -38,5 +38,8 @@ export default defineComponent({
 }
 #container:hover img {
     transform: scale(1.03);
+}
+span {
+    font-weight: 500;
 }
 </style>

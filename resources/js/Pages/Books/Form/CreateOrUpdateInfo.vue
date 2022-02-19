@@ -44,7 +44,7 @@ export default defineComponent({
     props: {
         book: {
             type: Object ,
-            required: false  
+            required: false
         }
     },
 
@@ -54,7 +54,7 @@ export default defineComponent({
             const target = $event.target as HTMLInputElement
             if ( target && target.files ) {
                 images.value = target.files[0];
-            } 
+            }
         }
         const bookInfo = reactive({
             title : props.book?.title || '',
@@ -72,7 +72,7 @@ export default defineComponent({
         }
 
         const saveBook = (bookInfo: Book) => {
-            axios.post('/books/save_book', 
+            axios.post('/books/save_book',
                 constructFormData(
                     bookInfo,
                     [
@@ -89,7 +89,7 @@ export default defineComponent({
 
         const sendBookData = () => {
             props.book ? updateBook(bookInfo) : saveBook(bookInfo)
-        }    
+        }
 
         return { images, imageUpload, bookInfo, sendBookData}
     }
@@ -97,5 +97,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+    .form-control:focus {
+        box-shadow: none;
+    }
 </style>

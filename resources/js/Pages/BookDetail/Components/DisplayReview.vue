@@ -95,4 +95,7 @@ export default defineComponent({
 button {
     display: inline-block;
 }
+textarea:focus {
+    box-shadow: none;
+}
 </style>

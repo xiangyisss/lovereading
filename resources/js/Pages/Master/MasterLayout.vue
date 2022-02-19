@@ -1,6 +1,6 @@
 <template>
-    <main>
-        <header>
+    <header>
+        <div class="menu-wrapper">
             <div class="logo">
                 <Link href="/">Love read</Link>
             </div>
@@ -15,11 +15,14 @@
                     <Link href="/register_form"  >Register</Link>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+    <main>
         <article>
             <slot/>
         </article>
     </main>
+    <footer>© 2022 Loveread, Xiang YS</footer>
 </template>
 
 <script lang="ts">
@@ -32,7 +35,7 @@ import AuthUser from '../../stores/AuthUser';
 export default defineComponent({
     components: {
         Link,
-        Logout,
+        Logout
     },
     setup() {
         //@ts-ignore
@@ -59,21 +62,34 @@ export default defineComponent({
 </script>
 
 <style scoped>
-main {
+
+header {
     width: 100%;
     height: 8vh;
     background-color: #232f3e;
+    flex-shrink: 0;
 }
-header {
+.menu-wrapper {
     width: 80%;
     max-width: 1500px;
     height: 100%;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    width: 100%;
+    height: 60px;
+    padding: 1rem;
+    background-color: #232f3e;
+    color: whitesmoke;
+    text-align: center;
+    flex-shrink: 0;
 }
 .menu-list{
     width: 40%;
@@ -126,9 +142,6 @@ a {
 }
 
 @media (max-width: 460px) {
-    header {
-        width: 85%;
-    }
     .login {
         width: 60%;
     }

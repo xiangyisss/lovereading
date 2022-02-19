@@ -1,8 +1,5 @@
 <template>
     <div class="container mt-5" >
-        <div class="row">
-            <div class="col">
-
                 <form action="" method="post" @submit.prevent="sendRegisterData" autocomplete="off">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -18,10 +15,8 @@
                     </div>
                     <!-- <label for="password2">Password</label>
                     <input type="password" name="password2" id="password2" v-model="registerForm.password_confirm" required minlength="8"> -->
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit">Register</button>
                 </form>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -36,7 +31,7 @@ export default defineComponent({
     name: 'Register',
     layout: MasterLayout,
     setup () {
-        
+
         const { state,authUser } = AuthUser();
         const registerForm = reactive({
             name : '',
@@ -64,7 +59,7 @@ export default defineComponent({
             })
         }
 
-        return { 
+        return {
             ...state,
             registerForm,
             sendRegisterData,
@@ -74,5 +69,35 @@ export default defineComponent({
 </script>
 
 <style scoped>
+    button {
+        width: 6rem;
+        padding: 0.5rem;
+        background: #49a09d;
+        border: none;
+        border-radius: 4px;
+    }
+    form {
+        width: 40%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .form-control:focus {
+        box-shadow: none;
+    }
 
+    @media (max-width: 1200px) {
+        form {
+            width: 50%;
+        }
+    }
+    @media (max-width: 960px) {
+        form {
+            width: 60%;
+        }
+    }
+    @media (max-width: 560px) {
+        form {
+            width: 80%;
+        }
+}
 </style>

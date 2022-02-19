@@ -1,6 +1,6 @@
 <template>
-    <div class="container-md" >
-        <form action="" method="post" @submit.prevent="login" >
+    <div class="container mt-5" >
+        <form  action="" method="post" @submit.prevent="login" >
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input
@@ -22,14 +22,14 @@
                     required
                 />
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit">Login</button>
         </form>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import MasterLayout from "../Master/MasterLayout.vue";
+import MasterLayout from "@/Master/MasterLayout.vue";
 import axios from "axios";
 import AuthUser from '../../stores/AuthUser';
 import { Inertia } from '@inertiajs/inertia';
@@ -70,4 +70,36 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+    button {
+        width: 6rem;
+        padding: 0.5rem;
+        background: #49a09d;
+        border: none;
+        border-radius: 4px;
+    }
+    form {
+        width: 40%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .form-control:focus {
+        box-shadow: none;
+    }
+
+    @media (max-width: 1200px) {
+        form {
+            width: 50%;
+        }
+    }
+    @media (max-width: 960px) {
+        form {
+            width: 60%;
+        }
+    }
+    @media (max-width: 560px) {
+        form {
+            width: 80%;
+        }
+    }
+</style>

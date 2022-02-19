@@ -3,9 +3,17 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "EB Garamond", serif;
+
 }
 
-html {
+html,body {
     width: 100%;
-    min-height: 100vh;
+    height:100vh;
+    overflow-x: hidden;
+}
+
+#app {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
 }

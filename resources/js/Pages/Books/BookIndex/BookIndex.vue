@@ -7,21 +7,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import MasterLayout from '@/Master/MasterLayout.vue';
 import BookComponent from './Components/BookComponent.vue'
+import { Book } from '@/interface/Book'
 
 export default defineComponent({
     name: 'BookIndex',
     layout: MasterLayout,
     props: {
         books:{
-            type: Array,
+            type: Array as PropType<Book[]>,
             required: true
         }
     },
     components:{ BookComponent },
-    
+
 })
 </script>
 

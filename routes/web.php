@@ -6,11 +6,13 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RegisterController;
 
 
 Route::get('/login_form', [LoginController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index']);
 Route::get('/register_form', [RegisterController::class, 'index']);
 Route::get('/auth_user', [UserController::class, 'index']);
 
