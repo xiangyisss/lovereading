@@ -23,6 +23,7 @@ class ReviewController extends Controller
         // dd($findReview);
         $review = Review::firstOrCreate([
             'user_id' => Auth::user()->id,
+            'username' => Auth::user()->name,
             'book_id' => $request->book_id
         ], $request->except('book_id'));
         if($review->wasRecentlyCreated) {

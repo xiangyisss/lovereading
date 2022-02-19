@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Review;
+
 use Inertia\Inertia;
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -27,7 +29,7 @@ class BookController extends Controller
         return Inertia::render('Books/BookIndex/BookIndex', compact('books'));
     }
 
-    public function addNewBook() 
+    public function addNewBook()
     {
         return Inertia::render('Books/Form/CreateOrUpdateInfo.vue');
     }
@@ -40,14 +42,14 @@ class BookController extends Controller
     }
 
 
-    public function detailPage($bookId) 
+    public function detailPage($bookId)
     {
         $book = Book::with('reviews')->find($bookId);
-        // $userHasCommented = 
+        // $userHasCommented =
         //     $book->reviews
         //         ->where('user_id', Auth::user()->id)
         //         ->count() > 0 ? true : false;
-        return Inertia::render('BookDetail/BookDetailIndex', 
+        return Inertia::render('BookDetail/BookDetailIndex',
             compact(
                 'book',
                 // 'userHasCommented',
@@ -55,19 +57,19 @@ class BookController extends Controller
     }
 
     public function create(SaveBookRequest $request)
-    {   
+    {
         $validData = $request->validated();
         $path = $request->file('image')->store('uploads', 'public');
-        $updateData = array_merge($validData, [            
+        $updateData = array_merge($validData, [
             'user_id' => Auth::user()->id,
-            'image' => $path, 
+            'image' => $path,
         ]);
         $this->book->create($updateData);
         return $updateData;
     }
 
     public function update(Book $book, updateBookRequest $request)
-    {   
+    {
         $validData = $request->validated();
         $this->authorize('update', $book);
         $book->update($validData);

@@ -4,4 +4,5 @@ export interface Review {
     updated_at: string
     user_id?: number
     book_id?: number
+    username: string
 }

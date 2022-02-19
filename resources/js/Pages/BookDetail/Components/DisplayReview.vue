@@ -2,9 +2,9 @@
     <div class="reviews-container mt-3 mb-5">
         <div class="card" >
             <!-- <div v-if="!showEditReviewContainer" class="card-header"></div> -->
-            <div class="card-header"><img src="../../../../icon/user-icon.svg" alt=""></div>
+            <div class="card-header"><img src="../../../../icon/user-icon.svg" alt=""> {{review.username}}</div>
             <div v-if="!showEditReviewContainer" class="card-body">{{ review.review }}</div>
-            <div v-if="!showEditReviewContainer" class="card-footer">{{review.user_id}}, {{dateFormated}}
+            <div v-if="!showEditReviewContainer" class="card-footer">Created at {{dateFormated}}
                 <div v-if="id === review.user_id && !showEditReviewContainer" class="edit-buttons">
                     <EditButton :review="review"
                         @change-edit-status="changeShowContainerStatus"
@@ -17,8 +17,6 @@
                 </div>
             </div>
         </div>
-        <!-- <p v-if="!showEditReviewContainer">review: {{ review.review }}</p>
-        <p v-if="!showEditReviewContainer">{{dateFormated}}</p> -->
         <div v-if="showEditReviewContainer" >
             <label for="review" class="form-label"></label>
             <textarea name="review" id="review"
@@ -32,16 +30,6 @@
             />
         </div>
 
-        <!-- <div v-if="id === review.user_id && !showEditReviewContainer">
-            <EditButton :review="review"
-                @change-edit-status="changeShowContainerStatus"
-                @get-review="updateReviewInfo"
-            />
-            <DeleteButton
-                :book-id="book.id"
-                :review-id="review.id"
-            />
-        </div> -->
     </div>
 </template>
 
@@ -131,7 +119,7 @@ textarea:focus {
 }
 .edit-buttons {
     margin-left: 1rem;
-    width: 10rem;
+    width: 9rem;
     display: flex;
     justify-content: space-between;
 }

@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-primary" @click="deleteReview">
+    <button @click="deleteReview">
         Delete
     </button>
 </template>
@@ -25,3 +25,12 @@
             .catch((err) => console.log(err.message));
     };
 </script>
+
+<style scoped>
+    button {
+        width: 4rem;
+            border: 1px solid #4B79A1;
+            border-radius: 4px;
+            background-color: transparent;
+    }
+</style>
