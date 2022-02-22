@@ -65,7 +65,7 @@ export default defineComponent({
         border-radius: 4px;
         text-decoration: none;
         color: #4B79A1;
-        border: 1px solid #4B79A1;
+        border: 1px solid #DAAA63;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
     .bookdetails> * {

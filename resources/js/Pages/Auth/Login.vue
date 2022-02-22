@@ -74,9 +74,13 @@ export default defineComponent({
     button {
         width: 6rem;
         padding: 0.5rem;
-        background: #49a09d;
-        border: none;
+        background: transparent;
+        border: 1px solid #DAAA63;
         border-radius: 4px;
+        font-weight: 500;
+    }
+    label {
+        font-weight: 500;
     }
     form {
         width: 40%;

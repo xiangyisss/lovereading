@@ -114,7 +114,7 @@ export default defineComponent({
     }
     button {
         padding: 0.25rem 0.5rem;
-        background-color: #4B79A1;
+        background-color: #DAAA63;
         border-radius: 4px;
         color: whitesmoke;
         border: none;

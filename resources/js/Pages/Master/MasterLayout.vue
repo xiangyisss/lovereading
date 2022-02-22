@@ -2,7 +2,7 @@
     <header>
         <div class="menu-wrapper">
             <div class="logo">
-                <Link href="/">Love read</Link>
+                <Link href="/"><img src="../../../icon/heart-tree.svg" alt=""> Reading tree </Link>
             </div>
             <div class="menu-list">
                 <Link href="/about">About</Link>
@@ -74,6 +74,10 @@ header {
     font-size: 1.2rem;
     font-weight: 600;
     color: #2C1810;
+}
+.logo img {
+    width: 20px;
+    margin-right: 0.5rem;
 }
 .menu-wrapper {
     width: 80%;

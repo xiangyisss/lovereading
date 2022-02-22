@@ -1,7 +1,7 @@
 <template>
     <div class="container-md mt-5">
         <h1>This project is based on { Vue, Laravel, MySql, TypeScript } stack.</h1>
-        <h5 class="mt-3">The idea is form 'Good Reads' book review website, for share personal most memoriable and expertly written books.</h5>
+        <h5 class="mt-3">The idea is form 'Good Reads' book recommendations website, for share personal most memoriable and expertly written books.</h5>
     </div>
 </template>
 

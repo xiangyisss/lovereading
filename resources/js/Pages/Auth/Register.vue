@@ -72,9 +72,10 @@ export default defineComponent({
     button {
         width: 6rem;
         padding: 0.5rem;
-        background: #49a09d;
-        border: none;
+        background: transparent;
+        border: 1px solid #DAAA63;
         border-radius: 4px;
+        font-weight: 500;
     }
     form {
         width: 40%;
@@ -84,7 +85,9 @@ export default defineComponent({
     .form-control:focus {
         box-shadow: none;
     }
-
+    label {
+        font-weight: 500;
+    }
     @media (max-width: 1200px) {
         form {
             width: 50%;
