@@ -1,6 +1,13 @@
 <template>
     <div class="container mt-5">
-        <button  v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"  @click="checkIfLoggedIn">Share a review</button>
+        <!-- <button  v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"  @click="checkIfLoggedIn">Share a review</button> -->
+        <ShareReviewButton
+            :alertStatus="alertStatus"
+            :showWriteReviewContainer="showWriteReviewContainer"
+            @alertStatusUpdate="showAlert"
+            @writeReviewBoxStatusUpdate="showReviewBox"
+             v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"
+        />
         <form
             action=""
             method="post"
@@ -34,14 +41,16 @@ import { Book } from "@/interface/Book";
 import { Review } from "@/interface/Review";
 import { constructFormData } from "../../../Utils/helpers";
 import { Inertia } from "@inertiajs/inertia";
-import AuthUser from '../../../stores/AuthUser';
+// import AuthUser from '../../../stores/AuthUser';
+import AuthUser from "../../../stores/AuthUser";
 import Alert from './Alert/Alert.vue';
+import ShareReviewButton from "./CreateReviewComponents/ShareReviewButton.vue";
 
 interface Props {
     book: Book
 }
 export default defineComponent({
-    components: { Alert },
+    components: { Alert, ShareReviewButton },
     props: {
         book: {
             type: Object as PropType<Book>,
@@ -49,8 +58,8 @@ export default defineComponent({
         },
     },
     setup(props: Props) {
-        let showWriteReviewContainer = ref(false);
-        let alertStatus = ref(false);
+        const alertStatus = ref(false);
+        const showWriteReviewContainer = ref(false);
 
         const reviewInfo = reactive({
             review: "",
@@ -78,21 +87,19 @@ export default defineComponent({
             });
         };
 
-        const showAlert = ():void => {
-            setTimeout(() => {
-                alertStatus.value = false;
-            }, 2500)
-        }
         const { state } = AuthUser();
-        const checkIfLoggedIn = ():boolean | void => {
-            if(state.username.value) {
-                return showWriteReviewContainer.value = true;
-            }
-            alertStatus.value = true;
-            showAlert()
+
+        const showAlert = (data : boolean) :void => {
+            alertStatus.value= data
+        }
+        const showReviewBox = (data : boolean) :void => {
+            showWriteReviewContainer.value = data
         }
 
-        return { ...state, postReview, reviewInfo, checkIfUserCommented, showWriteReviewContainer, checkIfLoggedIn, alertStatus
+        return { ...state, postReview, reviewInfo,
+            checkIfUserCommented, showWriteReviewContainer,
+            showAlert, showReviewBox, alertStatus,
+
         };
     }
 });
