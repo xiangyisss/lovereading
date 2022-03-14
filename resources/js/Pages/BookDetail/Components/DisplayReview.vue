@@ -106,6 +106,7 @@ textarea:focus {
 }
 .card {
     margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .card-header img {
     width: 24px;

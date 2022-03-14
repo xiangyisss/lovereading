@@ -1,7 +1,10 @@
 <template>
     <div class="container-md mt-5">
-        <h1>This project is based on { Vue, Laravel, MySql, TypeScript } stack.</h1>
-        <h5 class="mt-3">The idea is form 'Good Reads' book recommendations website, for share personal most memoriable and expertly written books.</h5>
+        <h4>This project is based on { Vue, Laravel, MySql, TypeScript } stack.</h4>
+        <div class="d-flex flex-wrap">
+            <p class="mt-5">The idea is form 'Good Reads' book recommendations website, for share personal most memoriable and master-class books.</p>
+            <div class="reading-image"></div>
+        </div>
     </div>
 </template>
 
@@ -16,7 +19,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
-    h1, h5 {
+    h4, p {
         font-family: 'Montserrat', sans-serif;
+    }
+    p {
+        font-weight: 500;
+
+    }
+    .reading-image {
+        width: 100%;
+        height: 0;
+        padding-top: 50%;
+        background-image: url('../../../icon/boy-reading.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 3rem;
     }
 </style>

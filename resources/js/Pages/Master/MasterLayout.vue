@@ -2,6 +2,7 @@
     <header>
         <div class="menu-wrapper">
             <div class="logo">
+                <img src="../../../icon/heart-tree.svg" alt="">
                 <Link href="/"> Reading tree </Link>
             </div>
             <div class="menu-list">
@@ -70,10 +71,18 @@ header {
     flex-shrink: 0;
     font-family: 'Montserrat', sans-serif;;
 }
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10rem;
+}
 .logo a {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #2C1810;
+    /* color: #2C1810; */
+    color: whitesmoke;
 }
 .logo img {
     width: 20px;
