@@ -8,7 +8,8 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "npm run prod"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.0",
