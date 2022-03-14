@@ -1,34 +1,53 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "@popperjs/core": "^2.11.0",
-        "@vue/compiler-sfc": "^3.2.26",
-        "axios": "^0.21",
-        "bootstrap": "^5.1.3",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "resolve-url-loader": "^4.0.0",
-        "sass": "^1.32.11",
-        "sass-loader": "^11.0.1",
-        "ts-loader": "^9.2.6",
-        "typescript": "^4.5.4",
-        "vue-loader": "^17.0.0"
-    },
-    "dependencies": {
-        "@inertiajs/inertia": "^0.10.1",
-        "@inertiajs/inertia-vue3": "^0.5.2",
-        "path": "^0.12.7",
-        "vue": "^3.2.26",
-        "vue-router": "^4.0.12"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.0",
+    "@vue/compiler-sfc": "^3.2.26",
+    "axios": "^0.21",
+    "bootstrap": "^5.1.3",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4",
+    "vue-loader": "^17.0.0"
+  },
+  "dependencies": {
+    "@inertiajs/inertia": "^0.10.1",
+    "@inertiajs/inertia-vue3": "^0.5.2",
+    "path": "^0.12.7",
+    "vue": "^3.2.26",
+    "vue-router": "^4.0.12"
+  },
+  "name": "lovereading",
+  "description": "",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiangyisss/lovereading.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiangyisss/lovereading/issues"
+  },
+  "homepage": "https://github.com/xiangyisss/lovereading#readme"
 }

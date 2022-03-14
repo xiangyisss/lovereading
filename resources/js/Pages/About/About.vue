@@ -12,10 +12,6 @@ import MasterLayout from '../Master/MasterLayout.vue'
 export default defineComponent({
     name:'About',
     layout: MasterLayout,
-    setup () {
-
-        return {}
-    }
 })
 </script>
 

@@ -1,6 +1,5 @@
 <template>
     <div class="container mt-5">
-        <!-- <button  v-if="!checkIfUserCommented(book.reviews, 'user_id' , id)"  @click="checkIfLoggedIn">Share a review</button> -->
         <ShareReviewButton
             :alertStatus="alertStatus"
             :showWriteReviewContainer="showWriteReviewContainer"
@@ -41,7 +40,6 @@ import { Book } from "@/interface/Book";
 import { Review } from "@/interface/Review";
 import { constructFormData } from "../../../Utils/helpers";
 import { Inertia } from "@inertiajs/inertia";
-// import AuthUser from '../../../stores/AuthUser';
 import AuthUser from "../../../stores/AuthUser";
 import Alert from './Alert/Alert.vue';
 import ShareReviewButton from "./CreateReviewComponents/ShareReviewButton.vue";
@@ -81,6 +79,7 @@ export default defineComponent({
         };
 
         type arrayValue = (string | number | boolean);
+
         const checkIfUserCommented = (reviews: Review[] = [], key: string, val: arrayValue) => {
             return reviews.some((review: Review) => {
                 return review.hasOwnProperty(key) && review[key] === val;

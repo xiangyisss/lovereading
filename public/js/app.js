@@ -19238,10 +19238,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   name: 'About',
-  layout: _Master_MasterLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-  setup: function setup() {
-    return {};
-  }
+  layout: _Master_MasterLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
 /***/ }),
@@ -19514,7 +19511,6 @@ var __assign = undefined && undefined.__assign || function () {
 
 
 
- // import AuthUser from '../../../stores/AuthUser';
 
 
 
@@ -20582,7 +20578,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     minlength: "8"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.registerForm.password]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <label for=\"password2\">Password</label>\r\n                    <input type=\"password\" name=\"password2\" id=\"password2\" v-model=\"registerForm.password_confirm\" required minlength=\"8\"> "), _hoisted_8], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.registerForm.password]])]), _hoisted_8], 32
   /* HYDRATE_EVENTS */
   )]);
 }
@@ -20804,7 +20800,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Alert = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Alert");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button  v-if=\"!checkIfUserCommented(book.reviews, 'user_id' , id)\"  @click=\"checkIfLoggedIn\">Share a review</button> "), !_ctx.checkIfUserCommented(_ctx.book.reviews, 'user_id', _ctx.id) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ShareReviewButton, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [!_ctx.checkIfUserCommented(_ctx.book.reviews, 'user_id', _ctx.id) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ShareReviewButton, {
     key: 0,
     alertStatus: _ctx.alertStatus,
     showWriteReviewContainer: _ctx.showWriteReviewContainer,
@@ -20935,7 +20931,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_PostButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PostButton");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"!showEditReviewContainer\" class=\"card-header\"></div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"card-header\"><img src=\"../../../../icon/user-icon.svg\" alt=\"\"> <span>{{review.username}}</span></div> "), !_ctx.showEditReviewContainer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.review), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [!_ctx.showEditReviewContainer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.review.review), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !_ctx.showEditReviewContainer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Updated at " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.dateFormated) + " ", 1
   /* TEXT */
@@ -21341,7 +21337,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.bookInfo.buy_link]])]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"submit\" class=\"btn btn-primary\" @click=\"cancelSendData\">Cancel</button> ")], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.bookInfo.buy_link]])]), _hoisted_14], 32
   /* HYDRATE_EVENTS */
   )]);
 }
@@ -21409,7 +21405,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Logout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Logout");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img src=\"../../../icon/heart-tree.svg\" alt=\"\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: "/"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -21693,7 +21689,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nspan[data-v-f0d72b74] {\r\n        font-weight: 600;\n}\n.bookdetails a[data-v-f0d72b74] {\r\n        width: 11rem;\r\n        padding: 0.25rem 0.5rem;\r\n        text-align: center;\r\n        background-color: transparent;\r\n        border-radius: 4px;\r\n        text-decoration: none;\r\n        color: #4B79A1;\r\n        border: 1px solid #DAAA63;\r\n        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;\n}\n.bookdetails> *[data-v-f0d72b74] {\r\n        margin-bottom: 1.25rem;\n}\nbutton[data-v-f0d72b74] {\r\n        width: 4rem;\r\n        border: 1px solid #4B79A1;\r\n        border-radius: 4px;\r\n        background-color: transparent;\r\n        color: rgb(228, 118, 118);\n}\n.edit-buttons[data-v-f0d72b74] {\r\n        width: 10rem;\r\n        display: flex;\r\n        justify-content: space-between;\n}\nh1[data-v-f0d72b74], p[data-v-f0d72b74], span[data-v-f0d72b74] {\r\n        font-family: 'Libre Caslon Text', serif;\n}\nimg[data-v-f0d72b74] {\r\n        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nspan[data-v-f0d72b74] {\r\n        font-weight: 600;\n}\n.bookdetails a[data-v-f0d72b74] {\r\n        width: 11rem;\r\n        padding: 0.25rem 0.5rem;\r\n        text-align: center;\r\n        background-color: transparent;\r\n        border-radius: 4px;\r\n        text-decoration: none;\r\n        color: #4B79A1;\r\n        border: 1px solid #DAAA63;\r\n        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;\n}\n.bookdetails> *[data-v-f0d72b74] {\r\n        margin-bottom: 1.25rem;\n}\nbutton[data-v-f0d72b74] {\r\n        width: 4rem;\r\n        border: 1px solid #4B79A1;\r\n        border-radius: 4px;\r\n        background-color: transparent;\r\n        color: rgb(228, 118, 118);\n}\n.edit-buttons[data-v-f0d72b74] {\r\n        width: 10rem;\r\n        display: flex;\r\n        justify-content: space-between;\n}\nh1[data-v-f0d72b74], p[data-v-f0d72b74], span[data-v-f0d72b74] {\r\n        font-family: 'Libre Caslon Text', serif;\n}\nimg[data-v-f0d72b74] {\r\n        box-shadow:\r\n            rgba(0, 0, 0, 0.07) 0px 1px 1px,\r\n            rgba(0, 0, 0, 0.07) 0px 2px 2px,\r\n            rgba(0, 0, 0, 0.07) 0px 4px 4px,\r\n            rgba(0, 0, 0, 0.07) 0px 8px 8px,\r\n            rgba(0, 0, 0, 0.07) 0px 16px 16px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29287,7 +29283,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunklovereading"] = self["webpackChunklovereading"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

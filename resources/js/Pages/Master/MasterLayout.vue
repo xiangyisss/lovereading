@@ -2,7 +2,6 @@
     <header>
         <div class="menu-wrapper">
             <div class="logo">
-                <!-- <img src="../../../icon/heart-tree.svg" alt=""> -->
                 <Link href="/"> Reading tree </Link>
             </div>
             <div class="menu-list">

@@ -1,8 +1,6 @@
 <template>
     <div class="container mt-3 mb-5">
         <div class="card" >
-            <!-- <div v-if="!showEditReviewContainer" class="card-header"></div> -->
-            <!-- <div class="card-header"><img src="../../../../icon/user-icon.svg" alt=""> <span>{{review.username}}</span></div> -->
             <div v-if="!showEditReviewContainer" class="card-body">{{ review.review }}</div>
             <div v-if="!showEditReviewContainer" class="card-footer">Updated at {{dateFormated}}
                 <div v-if="id === review.user_id && !showEditReviewContainer" class="edit-buttons">

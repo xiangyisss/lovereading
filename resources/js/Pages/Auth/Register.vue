@@ -13,8 +13,6 @@
                         <label for="password1" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password1" id="password1" v-model="registerForm.password" required minlength="8">
                     </div>
-                    <!-- <label for="password2">Password</label>
-                    <input type="password" name="password2" id="password2" v-model="registerForm.password_confirm" required minlength="8"> -->
                     <button type="submit">Register</button>
                 </form>
     </div>

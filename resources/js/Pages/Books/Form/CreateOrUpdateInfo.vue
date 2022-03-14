@@ -26,7 +26,6 @@
                 <input type="text" class="form-control" name="buy_link" id="buy_link" v-model="bookInfo.buy_link">
             </div>
             <button type="submit" class="btn btn-primary" >Submit</button>
-            <!-- <button type="submit" class="btn btn-primary" @click="cancelSendData">Cancel</button> -->
         </form>
     </div>
 </template>
