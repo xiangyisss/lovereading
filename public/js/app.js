@@ -21124,8 +21124,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "/books/".concat(_ctx.book.id)
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _a;
+
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-        src: "/storage/".concat(_ctx.book.image),
+        src: (_a = "/storage/".concat(_ctx.book.image)) !== null && _a !== void 0 ? _a : '../../../../../../public/images/dummybookimage.jpg',
         style: {
           "height": "500px"
         },
@@ -21951,7 +21953,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbutton[data-v-5b17ddff] {\r\n    border: none;\r\n    background: none;\r\n    color: #f5f5f5;\r\n    cursor: pointer;\r\n    font-weight: 500;\r\n    display: block;\r\n    font-size: 1.2rem;\n}\n@media (max-width: 550px) {\nbutton[data-v-5b17ddff] {\r\n        font-size: 0.85rem;\n}\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nbutton[data-v-5b17ddff] {\r\n    border: none;\r\n    background: none;\r\n    color: #f5f5f5;\r\n    cursor: pointer;\r\n    font-weight: 500;\r\n    display: block;\r\n    font-size: 1rem;\n}\n@media (max-width: 550px) {\nbutton[data-v-5b17ddff] {\r\n        font-size: 0.85rem;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

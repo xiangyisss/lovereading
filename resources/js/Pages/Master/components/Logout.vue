@@ -39,7 +39,7 @@ button {
     cursor: pointer;
     font-weight: 500;
     display: block;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 550px) {

@@ -2,7 +2,7 @@
     <div class="card p-2 shadow p-3 mb-5 bg-body rounded border-0" style="width: 21rem;">
         <Link :href="`/books/${book.id}`">
         <div id="container">
-            <img :src="`/storage/${book.image}`" style="height:500px" class="img-scale card-img-top" alt="...">
+            <img :src="`/storage/${book.image}` ?? '../../../../../../public/images/dummybookimage.jpg'" style="height:500px" class="img-scale card-img-top" alt="...">
         </div>
         </Link>
         <div class="card-body">
